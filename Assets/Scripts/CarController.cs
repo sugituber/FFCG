@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using System.Collections.Generic;
 
 // Credits to Toyful Games' "Very Very Valet" single Rigidbody raycast approach
+// https://www.youtube.com/watch?v=CdPYlj5uZeI
 public class CarController : MonoBehaviour
 {
     private Vector2 moveInput; // Movement input
@@ -10,10 +11,16 @@ public class CarController : MonoBehaviour
 
     [Header("Refs")]
     public Rigidbody rb; // Car Rigidbody
-    public Transform FrontLeftWheel;
+
+    public Transform FrontLeftWheel; // Wheel raycast transforms
     public Transform FrontRightWheel;
     public Transform BackLeftWheel;
     public Transform BackRightWheel;
+
+    public GameObject FrontLeftWheelObj; // Wheel mesh objects
+    public GameObject FrontRightWheelObj;
+    public GameObject BackLeftWheelObj;
+    public GameObject BackRightWheelObj;
 
     [Header("Suspension")]
     public Vector3 centerOfMass = new(0f, -0.5f, 0f); // Center of mass in local space
@@ -23,18 +30,18 @@ public class CarController : MonoBehaviour
 
     [Header("Steering")]
     public float maxSteeringAngle = 30f; // Maximum turning angle
-    public float steeringSpeed = 200f;
-    public float tyreGripFactor = 0.5f; // Slippery/sticky tyre grip
-    public float tyreMass = 10f; // Tyre weight
+    public float steeringSpeed = 200f; // Gradual steering speed
+    public float tireGripFactor = 0.5f; // Slippery/sticky tire grip
+    public float tireMass = 10f; // tire weight
 
     [Header("Engine")]
     public float accelSpeed = 20f; // Maximum velocity
     public float accelForce = 150f; // Torque force
 
     [Header("Debug")]
+    // Gizmo debug
     public bool showGizmos = true;
     public float forceVisualScale = 1000f;
-    
     private struct WheelDebugInfo
     {
         public bool isGrounded;
@@ -53,7 +60,7 @@ public class CarController : MonoBehaviour
     
     void FixedUpdate()
     {
-        rb.centerOfMass = centerOfMass;
+        rb.centerOfMass = centerOfMass; // Debug update center of mass
         ApplyWheelForces(FrontLeftWheel);
         ApplyWheelForces(FrontRightWheel);
         ApplyWheelForces(BackLeftWheel);
@@ -62,75 +69,74 @@ public class CarController : MonoBehaviour
         ApplyWheelRotation(FrontRightWheel);
     }
 
-    void ApplyWheelRotation(Transform tyre)
+    void ApplyWheelRotation(Transform tire)
     {
+        // Gradual steering
         float desiredAngle = moveInput.x * maxSteeringAngle;
         currentSteerAngle = Mathf.MoveTowards(currentSteerAngle, desiredAngle, steeringSpeed * Time.fixedDeltaTime);
-
+        
+        // Apply rotation in local space for each front wheel
         FrontLeftWheel.localRotation = Quaternion.Euler(0, currentSteerAngle, 0);
         FrontRightWheel.localRotation = Quaternion.Euler(0, currentSteerAngle, 0);
+        FrontLeftWheelObj.transform.localRotation = Quaternion.Euler(0, currentSteerAngle, 0);
+        FrontRightWheelObj.transform.localRotation = Quaternion.Euler(0, currentSteerAngle, 0);
     }
 
-    void ApplyWheelForces(Transform tyre)
+    void ApplyWheelForces(Transform tire, bool applyAccel = true)
     {
+        // Debug show forces on each wheel
         WheelDebugInfo debugInfo = new WheelDebugInfo();
         debugInfo.suspensionForce = Vector3.zero;
         debugInfo.steeringForce = Vector3.zero;
         debugInfo.accelForce = Vector3.zero;
 
         RaycastHit hit;
-        bool grounded = Physics.Raycast(tyre.position, -tyre.up, out hit, suspensionRestDistance);
+        bool grounded = Physics.Raycast(tire.position, -tire.up, out hit, suspensionRestDistance);
 
-        if (!grounded) // Only apply forces when grounded
-        {
-            return;
-        }
+        if (!grounded) return; // Only apply forces when grounded
+
+        // START SUSPENSION
+        Vector3 springDirection = tire.up;
+        Vector3 tireWorldVelocity = rb.GetPointVelocity(tire.position);
+
+        // Hooke's Law https://en.wikipedia.org/wiki/Hooke%27s_law
+        // Calculate how much force to apply based on the current spring offset from
+        // resting position and current velocity in the direction of the spring
+        float offset = suspensionRestDistance - hit.distance;
+        float velocity = Vector3.Dot(springDirection, tireWorldVelocity);
+        float force = (offset * springStrength) - (velocity * springDamper);
+
+        rb.AddForceAtPosition(springDirection * force, tire.position);
+        // END SUSPENSION
+
+        // START TIRE FRICTION
+        Vector3 tireRight = tire.right;
+        
+        // Find lateral friction on the wheel
+        float tireSidewaysVelocity = Vector3.Dot(tireRight, tireWorldVelocity);
+        float desiredVelocityChange = -tireSidewaysVelocity * tireGripFactor;
+        float steerForce = desiredVelocityChange / Time.fixedDeltaTime * tireMass;
+
+        rb.AddForceAtPosition(tireRight * steerForce, tire.position);
+        // END TIRE FRICTION
+
+        // START ACCELERATION
+        // Apply force in the forward direction relative to each wheel
+        Vector3 tireForward = tire.forward;
+        Vector3 forwardForce = tireForward * moveInput.y * accelForce;
+        
+        if (moveInput.y != 0f && applyAccel) rb.AddForceAtPosition(forwardForce, tire.position);
+        // END ACCELERATION
 
         debugInfo.isGrounded = true;
         debugInfo.rayHitPoint = hit.point;
-
-        // START SUSPENSION
-        Vector3 springDirection = tyre.up;
-        Vector3 tyreWorldVelocity = rb.GetPointVelocity(tyre.position);
-
-        // Hooke's Law
-        float offset = suspensionRestDistance - hit.distance;
-        float velocity = Vector3.Dot(springDirection, tyreWorldVelocity);
-        float force = (offset * springStrength) - (velocity * springDamper);
-
-        rb.AddForceAtPosition(springDirection * force, tyre.position);
-
         debugInfo.suspensionForce = springDirection * force;
-        // END SUSPENSION
-
-        // START TYRE FRICTION
-        Vector3 tyreRight = tyre.right;
-        float tyreSidewaysVelocity = Vector3.Dot(tyreRight, tyreWorldVelocity);
-
-        float desiredVelocityChange = -tyreSidewaysVelocity * tyreGripFactor;
-        float steerForce = desiredVelocityChange / Time.fixedDeltaTime * tyreMass;
-
-        rb.AddForceAtPosition(tyreRight * steerForce, tyre.position);
-
-        debugInfo.steeringForce = tyreRight * steerForce;
-        // END TYRE FRICTION
-
-        // START ACCELERATION
-        Vector3 tyreForward = tyre.forward;
-
-        if (moveInput.y != 0f)
-        {
-            Vector3 forwardForce = tyreForward * moveInput.y * accelForce;
-            rb.AddForceAtPosition(forwardForce, tyre.position);
-
-            debugInfo.accelForce = forwardForce;
-        }
-        // END ACCELERATION
-
-        if (wheelDebugs.ContainsKey(tyre))
-            wheelDebugs[tyre] = debugInfo;
+        debugInfo.steeringForce = tireRight * steerForce;
+        debugInfo.accelForce = forwardForce;
+        if (wheelDebugs.ContainsKey(tire))
+            wheelDebugs[tire] = debugInfo;
         else
-            wheelDebugs.Add(tyre, debugInfo);
+            wheelDebugs.Add(tire, debugInfo);
     }
 
     // Get PlayerInput as Vector2(x: steering, y: acceleration)
