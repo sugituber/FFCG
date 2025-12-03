@@ -32,16 +32,18 @@ public class FinishLineColission : MonoBehaviour
         }
         lastSide = curr;
 
-        bool CrossedLine(Vector3 carPos)
-        {
-            Vector3 A = leftflag.position;
-            Vector3 B = rightflag.position;
+    }
 
-            Vector3 AB = B - A;
-            Vevtor3 AC = carPos - A;
-            float t = (AB.x * AC.Z) - (AB.z * AC.x);
-            return t;
-        }
+    float CrossedLine(Vector3 carPos)
+    {
+        Vector3 A = leftflag.position;
+        Vector3 B = rightflag.position;
+
+        Vector3 AB = B - A;
+        Vector3 AC = carPos - A;
+        float t = (AB.x * AC.z) - (AB.z * AC.x);
+        return t;
+    }
         // if (leftflag.position.x == rightflag.position.x)
         // {
         //     if (car.position.x > leftflag.position.x && car.position.x < rightflag.position.x || car.position.x < leftflag.position.x && car.position.x > rightflag.position.x)
@@ -54,5 +56,5 @@ public class FinishLineColission : MonoBehaviour
         // }
 
 
-    }
+    
 }

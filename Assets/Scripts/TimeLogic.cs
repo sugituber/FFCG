@@ -20,6 +20,7 @@ public class TimeLogic : MonoBehaviour
     public void StartTimer()
     {
         elapsedTime = 0f;
+        TimeRunning = true;
     }
 
     public void StopTimer()
