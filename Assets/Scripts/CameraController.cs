@@ -15,7 +15,7 @@ public class CameraController : MonoBehaviour
             transform.position,
             car.transform.position,
             ref _currentPositionVelocity,
-            0.2f
+            0.1f
         );
 
         float angleDelta = Quaternion.Angle(transform.rotation, car.transform.rotation);
