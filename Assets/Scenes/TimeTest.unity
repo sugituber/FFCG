@@ -2122,6 +2122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1696247735}
   - component: {fileID: 1696247734}
+  - component: {fileID: 1696247736}
   m_Layer: 0
   m_Name: TimeLogic
   m_TagString: Untagged
@@ -2136,7 +2137,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1696247733}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca3ec117247683a43949a8eaa895d4ca, type: 3}
   m_Name: 
@@ -2157,6 +2158,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -61.043, y: -29.447, z: -1.249}
+--- !u!114 &1696247736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696247733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5428a713cebeb064988cc6ff34a20cea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RaceStart
+  countdownText: {fileID: 993307333}
+  timerText: {fileID: 0}
+  car: {fileID: 0}
 --- !u!1001 &1701413101
 PrefabInstance:
   m_ObjectHideFlags: 0
