@@ -2,46 +2,47 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 
-// Credits to Toyful Games' "Very Very Valet" single Rigidbody raycast approach
-// https://www.youtube.com/watch?v=CdPYlj5uZeI
 public class CarController : MonoBehaviour
 {
-    private Vector2 moveInput; // Movement input
+    private Vector2 moveInput; 
     private float currentSteerAngle;
 
     [Header("Refs")]
-    public Rigidbody rb; // Car Rigidbody
-
-    public Transform FrontLeftWheel; // Wheel raycast transforms
-    public Transform FrontRightWheel;
-    public Transform BackLeftWheel;
-    public Transform BackRightWheel;
-
-    public GameObject FrontLeftWheelObj; // Wheel mesh objects
-    public GameObject FrontRightWheelObj;
-    public GameObject BackLeftWheelObj;
-    public GameObject BackRightWheelObj;
+    public Rigidbody rb;
+    public Transform FrontLeftWheel, FrontRightWheel;
+    public Transform BackLeftWheel, BackRightWheel;
+    public GameObject FrontLeftWheelObj, FrontRightWheelObj;
+    public GameObject BackLeftWheelObj, BackRightWheelObj;
 
     [Header("Suspension")]
-    public Vector3 centerOfMass = new(0f, -0.5f, 0f); // Center of mass in local space
-    public float suspensionRestDistance = 0.5f; // Suspension rest point
-    public float springStrength = 1000f; // Suspension force strength
-    public float springDamper = 100f; // Springy/sticky suspension
+    public Vector3 centerOfMass = new(0f, -0.1f, 0f);
+    public float suspensionRestDistance = 0.25f;
+    public float springStrength = 30000f;
+    public float springDamper = 2500f;
 
-    [Header("Steering")]
-    public float maxSteeringAngle = 30f; // Maximum turning angle
-    public float steeringSpeed = 200f; // Gradual steering speed
-    public float tireGripFactor = 0.5f; // Slippery/sticky tire grip
-    public float tireMass = 10f; // tire weight
+    [Header("Steering & Grip")]
+    public float lowSpeedSteerAngle = 30f; // Tight turning at low speed
+    public float highSpeedSteerAngle = 5f; // Gentle turning at high speed
+    public float speedForMinSteer = 10f;    // At 50 speed, we only use highSpeedSteerAngle
+    public float steeringSpeed = 100f;
+    [Range(0f, 1f)] public float tireGripFactor = 0.8f; // 0.8 is usually a sweet spot
+    public float tireMass = 100f; // Ensure this is high enough!
 
     [Header("Engine")]
-    public float accelSpeed = 20f; // Maximum velocity
-    public float accelForce = 150f; // Torque force
+    public float accelSpeed = 30f; // Max Speed
+    public float accelForce = 2000f; 
+    [Range(0f, 1f)] public float airDrag = 0.02f; // Stops car from coasting forever
+
+    [Header("Drive Type")]
+    public bool useAllWheelDrive = true;
+    public bool useRearWheelDrive = false; 
+    // If both false, it defaults to Front Wheel Drive
 
     [Header("Debug")]
-    // Gizmo debug
     public bool showGizmos = true;
-    public float forceVisualScale = 1000f;
+    public float forceVisualScale = 2000f;
+
+    // Debug Struct
     private struct WheelDebugInfo
     {
         public bool isGrounded;
@@ -52,7 +53,6 @@ public class CarController : MonoBehaviour
     }
     private Dictionary<Transform, WheelDebugInfo> wheelDebugs = new Dictionary<Transform, WheelDebugInfo>();
 
-
     void Start()
     {
         rb.centerOfMass = centerOfMass;
@@ -60,105 +60,139 @@ public class CarController : MonoBehaviour
     
     void FixedUpdate()
     {
-        rb.centerOfMass = centerOfMass; // Debug update center of mass
-        ApplyWheelForces(FrontLeftWheel);
-        ApplyWheelForces(FrontRightWheel);
-        ApplyWheelForces(BackLeftWheel);
-        ApplyWheelForces(BackRightWheel);
-        ApplyWheelRotation(FrontLeftWheel);
-        ApplyWheelRotation(FrontRightWheel);
+        // 1. Determine Drive Type
+        bool frontPower = useAllWheelDrive || (!useRearWheelDrive); // Default to FWD if nothing selected
+        bool rearPower = useAllWheelDrive || useRearWheelDrive;
+
+        // 2. Apply Forces
+        ApplyWheelForces(FrontLeftWheel, frontPower);
+        ApplyWheelForces(FrontRightWheel, frontPower);
+        ApplyWheelForces(BackLeftWheel, rearPower);
+        ApplyWheelForces(BackRightWheel, rearPower);
+
+        // 3. Apply Steering
+        ApplyWheelRotation(FrontLeftWheel, FrontLeftWheelObj);
+        ApplyWheelRotation(FrontRightWheel, FrontRightWheelObj);
+        
+        // (Optional) Update Back Wheel Visuals just to follow the car body
+        // You can add visual rotation logic here if you want them to spin
+
+        // 4. Apply Air Drag (This fixes the "floating in space" feeling)
+        if (rb.linearVelocity.magnitude > 0.1f)
+        {
+             // Uses velocity squared for natural air resistance
+             rb.AddForce(-rb.linearVelocity * rb.linearVelocity.magnitude * airDrag);
+        }
+
+        Debug.Log(rb.linearVelocity);
     }
 
-    void ApplyWheelRotation(Transform tire)
+    void ApplyWheelRotation(Transform tireRaycast, GameObject tireMesh)
     {
-        // Gradual steering
-        float desiredAngle = moveInput.x * maxSteeringAngle;
+        // 1. Calculate current forward speed (absolute value so reversing works too)
+        float currentSpeed = Vector3.Dot(rb.linearVelocity, transform.forward);
+        float speedFactor = Mathf.InverseLerp(0f, speedForMinSteer, Mathf.Abs(currentSpeed));
+
+        // 2. Determine the dynamic max angle based on speed
+        // If speed is 0, we get lowSpeedSteerAngle. If speed is high, we get highSpeedSteerAngle.
+        float currentMaxAngle = Mathf.Lerp(lowSpeedSteerAngle, highSpeedSteerAngle, speedFactor);
+
+        // 3. Calculate target angle
+        float desiredAngle = moveInput.x * currentMaxAngle;
+        
+        // 4. Smoothly rotate towards that angle
         currentSteerAngle = Mathf.MoveTowards(currentSteerAngle, desiredAngle, steeringSpeed * Time.fixedDeltaTime);
         
-        // Apply rotation in local space for each front wheel
-        FrontLeftWheel.localRotation = Quaternion.Euler(0, currentSteerAngle, 0);
-        FrontRightWheel.localRotation = Quaternion.Euler(0, currentSteerAngle, 0);
-        FrontLeftWheelObj.transform.localRotation = Quaternion.Euler(0, currentSteerAngle, 0);
-        FrontRightWheelObj.transform.localRotation = Quaternion.Euler(0, currentSteerAngle, 0);
+        // Rotate the Raycast Point (Physics)
+        tireRaycast.localRotation = Quaternion.Euler(0, currentSteerAngle, 0);
+        
+        // Rotate the Mesh (Visual)
+        if(tireMesh != null)
+            tireMesh.transform.localRotation = Quaternion.Euler(0, currentSteerAngle, 0);
     }
 
-    void ApplyWheelForces(Transform tire, bool applyAccel = true)
+    void ApplyWheelForces(Transform tire, bool applyAccel)
     {
-        // Debug show forces on each wheel
         WheelDebugInfo debugInfo = new WheelDebugInfo();
-        debugInfo.suspensionForce = Vector3.zero;
-        debugInfo.steeringForce = Vector3.zero;
-        debugInfo.accelForce = Vector3.zero;
-
         RaycastHit hit;
+
+        // Check if tire is on the ground
         bool grounded = Physics.Raycast(tire.position, -tire.up, out hit, suspensionRestDistance);
 
-        if (!grounded) return; // Only apply forces when grounded
+        if (!grounded) 
+        {
+            // Stop car rotation if braking
+            if (moveInput.y < 0) rb.angularVelocity = new(0,0,0);
+            // If in air, clear debugs and return
+            if (wheelDebugs.ContainsKey(tire)) wheelDebugs.Remove(tire);
+            return; 
+        }
 
-        // START SUSPENSION
+        // --- A. SUSPENSION ---
         Vector3 springDirection = tire.up;
         Vector3 tireWorldVelocity = rb.GetPointVelocity(tire.position);
 
-        // Hooke's Law https://en.wikipedia.org/wiki/Hooke%27s_law
-        // Calculate how much force to apply based on the current spring offset from
-        // resting position and current velocity in the direction of the spring
         float offset = suspensionRestDistance - hit.distance;
         float velocity = Vector3.Dot(springDirection, tireWorldVelocity);
         float force = (offset * springStrength) - (velocity * springDamper);
+        
+        Vector3 suspensionForce = springDirection * force;
+        rb.AddForceAtPosition(suspensionForce, tire.position);
 
-        rb.AddForceAtPosition(springDirection * force, tire.position);
-        // END SUSPENSION
-
-        // START TIRE FRICTION
+        // --- B. STEERING / GRIP ---
         Vector3 tireRight = tire.right;
-        
-        // Find lateral friction on the wheel
         float tireSidewaysVelocity = Vector3.Dot(tireRight, tireWorldVelocity);
-        float desiredVelocityChange = -tireSidewaysVelocity * tireGripFactor;
-        float steerForce = desiredVelocityChange / Time.fixedDeltaTime * tireMass;
-
-        rb.AddForceAtPosition(tireRight * steerForce, tire.position);
-        // END TIRE FRICTION
-
-        // START ACCELERATION
-        // Apply force in the forward direction relative to each wheel
-        Vector3 tireForward = tire.forward;
-        Vector3 forwardForce = tireForward * moveInput.y * accelForce;
         
-        if (moveInput.y != 0f && applyAccel) rb.AddForceAtPosition(forwardForce, tire.position);
-        // END ACCELERATION
+        float desiredVelocityChange = -tireSidewaysVelocity * tireGripFactor;
+        float steerForceVal = desiredVelocityChange / Time.fixedDeltaTime * tireMass;
+        
+        Vector3 steeringForce = tireRight * steerForceVal;
+        rb.AddForceAtPosition(steeringForce, tire.position);
 
+        // --- C. ACCELERATION (With Speed Limit) ---
+        Vector3 tireForward = tire.forward;
+        Vector3 accelForceVector = Vector3.zero;
+
+        if (applyAccel)
+        {
+            float currentSpeed = Vector3.Dot(tireWorldVelocity, tireForward);
+            bool canAccelerate = false;
+
+            if (moveInput.y > 0) // Moving Forward
+                canAccelerate = currentSpeed < accelSpeed;
+            else if (moveInput.y < 0) // Reversing
+                canAccelerate = currentSpeed > -accelSpeed;
+
+            if (canAccelerate)
+            {
+                accelForceVector = tireForward * moveInput.y * accelForce;
+                rb.AddForceAtPosition(accelForceVector, tire.position);
+            }
+        }
+
+        // Save Debug Data
         debugInfo.isGrounded = true;
         debugInfo.rayHitPoint = hit.point;
-        debugInfo.suspensionForce = springDirection * force;
-        debugInfo.steeringForce = tireRight * steerForce;
-        debugInfo.accelForce = forwardForce;
-        if (wheelDebugs.ContainsKey(tire))
-            wheelDebugs[tire] = debugInfo;
-        else
-            wheelDebugs.Add(tire, debugInfo);
+        debugInfo.suspensionForce = suspensionForce;
+        debugInfo.steeringForce = steeringForce;
+        debugInfo.accelForce = accelForceVector;
+
+        if (wheelDebugs.ContainsKey(tire)) wheelDebugs[tire] = debugInfo;
+        else wheelDebugs.Add(tire, debugInfo);
     }
 
-    // Get PlayerInput as Vector2(x: steering, y: acceleration)
     public void GetInputs(InputAction.CallbackContext ctx)
     {
         moveInput = ctx.ReadValue<Vector2>();
     }
 
-        // --- GIZMOS ---
     void OnDrawGizmos()
     {
-        if (!showGizmos) return;
+        if (!showGizmos || rb == null) return;
 
-        // 1. Draw Center of Mass
-        if (rb != null)
-        {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawSphere(rb.worldCenterOfMass, 0.2f);
-            Gizmos.DrawWireSphere(rb.worldCenterOfMass, 0.21f); // outline
-        }
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(rb.worldCenterOfMass, 0.2f);
 
-        // 2. Draw Wheel Forces
         DrawWheelGizmos(FrontLeftWheel);
         DrawWheelGizmos(FrontRightWheel);
         DrawWheelGizmos(BackLeftWheel);
@@ -172,37 +206,19 @@ public class CarController : MonoBehaviour
         WheelDebugInfo info = wheelDebugs[tireTransform];
         Vector3 origin = tireTransform.position;
 
-        // Draw Raycast Limit (White = Air, Red = Hit Ground)
         Gizmos.color = info.isGrounded ? Color.red : Color.white;
         Gizmos.DrawLine(origin, origin - (tireTransform.up * suspensionRestDistance));
 
         if (info.isGrounded)
         {
-            // Draw Hit Point
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawSphere(info.rayHitPoint, 0.05f);
+            Gizmos.color = Color.green; // Susp
+            Gizmos.DrawRay(origin, info.suspensionForce / forceVisualScale);
 
-            // Draw Suspension Force (Green)
-            // We scale the length down because forces are usually 5000+ units
-            if (info.suspensionForce.magnitude > 1f)
-            {
-                Gizmos.color = Color.green;
-                Gizmos.DrawRay(origin, info.suspensionForce / forceVisualScale);
-            }
+            Gizmos.color = Color.red; // Grip
+            Gizmos.DrawRay(origin, info.steeringForce / forceVisualScale);
 
-            // Draw Steering Force (Red)
-            if (info.steeringForce.magnitude > 1f)
-            {
-                Gizmos.color = Color.red;
-                Gizmos.DrawRay(origin, info.steeringForce / forceVisualScale);
-            }
-
-            // Draw Acceleration Force (Blue)
-            if (info.accelForce.magnitude > 1f)
-            {
-                Gizmos.color = Color.blue;
-                Gizmos.DrawRay(origin, info.accelForce / forceVisualScale);
-            }
+            Gizmos.color = Color.blue; // Accel
+            Gizmos.DrawRay(origin, info.accelForce / forceVisualScale);
         }
     }
 }
