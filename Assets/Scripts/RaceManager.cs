@@ -11,8 +11,7 @@ public class RaceStart : MonoBehaviour
     public CarController car;
 
     void Start()
-    {
-        Debug.Log("RaceStart Start() is running!");
+    { 
         car.enabled = false;
         StartCoroutine(StartCountdown());
     }
@@ -22,6 +21,7 @@ public class RaceStart : MonoBehaviour
         int countdown = 3;
 
         while (countdown > 0)
+        
         {
             countdownText.text = countdown.ToString();
             yield return new WaitForSeconds(1f);
