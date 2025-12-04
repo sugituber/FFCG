@@ -13,7 +13,7 @@ public class TimeUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (raceTimer.TimeRunning)
-            timerText.text = raceTimer.TimeFormat();
+        // if (raceTimer.TimeRunning)
+        timerText.text = raceTimer.TimeFormat();
     }
 }

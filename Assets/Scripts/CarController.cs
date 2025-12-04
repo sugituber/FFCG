@@ -58,6 +58,16 @@ public class CarController : MonoBehaviour
         rb.centerOfMass = centerOfMass;
     }
     
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.CompareTag("Finish"))
+        {
+            // Debug.Log("Here");
+            FinishLineColission.instance.CrossFinish();
+        }
+    }
+
     void FixedUpdate()
     {
         // 1. Determine Drive Type
@@ -84,7 +94,7 @@ public class CarController : MonoBehaviour
              rb.AddForce(-rb.linearVelocity * rb.linearVelocity.magnitude * airDrag);
         }
 
-        Debug.Log(rb.linearVelocity);
+        // Debug.Log(rb.linearVelocity);
     }
 
     void ApplyWheelRotation(Transform tireRaycast, GameObject tireMesh)
