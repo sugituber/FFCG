@@ -63,7 +63,7 @@ public class CarController : MonoBehaviour
     {
         if (collider.CompareTag("Finish"))
         {
-            Debug.Log("Here");
+            // Debug.Log("Here");
             FinishLineColission.instance.CrossFinish();
         }
     }

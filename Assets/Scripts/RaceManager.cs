@@ -3,12 +3,12 @@ using System.Collections;
 
 public class RaceStart : MonoBehaviour
 {
+    
     public TMPro.TextMeshProUGUI countdownText;
     public TMPro.TextMeshProUGUI timerText;
-    // private float raceTime = 0f;
-    private bool raceStarted = false;
+    private float raceTime = 0f;
+    public bool raceStarted = false;
     public CarController car;
-    public TimeLogic timeLogic;
 
     void Start()
     {
@@ -31,7 +31,6 @@ public class RaceStart : MonoBehaviour
         countdownText.text = "START!";
         raceStarted = true;
         car.enabled = true;
-        timeLogic.StartTimer();
 
         yield return new WaitForSeconds(1f);
 
@@ -42,9 +41,11 @@ public class RaceStart : MonoBehaviour
     {
         if (raceStarted)
         {
-            // raceTime += Time.deltaTime;
-            // timerText.text = raceTime.ToString("F2");
-            timerText.text = timeLogic.TimeFormat();
+            raceTime += Time.deltaTime;
+            int min = (int) (raceTime/60f);
+            int sec = (int) (raceTime % 60f);
+            int ms = (int) ((raceTime * 1000f) % 1000);
+            timerText.text = $"{min:00}:{sec:00}.{ms:000}";
         }
     }
 }
