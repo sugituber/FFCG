@@ -3,27 +3,29 @@ using System.Collections;
 
 public class SpeedBoost : MonoBehaviour
 {
-    public float boostMultiplier = 1.5f;
-    public float boostDuration = 3f;
+    public float boostMultiplier = 2f;
+    public float boostDuration = 1f;
 
     private void OnTriggerEnter(Collider other)
     {
-        Rigidbody rb = other.GetComponent<Rigidbody>();
-        if (rb != null)
+        CarController car = other.GetComponent<CarController>();
+        if (car != null)
         {
-            StartCoroutine(ApplyBoost(rb));
+            StartCoroutine(BoostCoroutine(car));
         }
     }
 
-    private IEnumerator ApplyBoost(Rigidbody rb)
+    private IEnumerator BoostCoroutine(CarController car)
     {
-        //we store the original velocity
-        Vector3 originalVelocity = rb.linearVelocity; 
+        float originalAccelForce = car.accelForce;
+        float originalAccelSpeed = car.accelSpeed;
 
-        //we apply a forward boost
-        rb.linearVelocity += rb.transform.forward * rb.linearVelocity.magnitude * (boostMultiplier - 1f);
+        car.accelForce *= boostMultiplier;
+        car.accelSpeed *= boostMultiplier;
 
         yield return new WaitForSeconds(boostDuration);
 
+        car.accelForce = originalAccelForce;
+        car.accelSpeed = originalAccelSpeed;
     }
 }
