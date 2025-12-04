@@ -1979,9 +1979,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4349413840340278680, guid: 8499ae06cc7163c42bbb69a0a71dceb8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418219464483935768, guid: 8499ae06cc7163c42bbb69a0a71dceb8, type: 3}
+      propertyPath: showGizmos
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418219464483935768, guid: 8499ae06cc7163c42bbb69a0a71dceb8, type: 3}
+      propertyPath: tireGripFactor
+      value: 0.688
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418219464483935768, guid: 8499ae06cc7163c42bbb69a0a71dceb8, type: 3}
+      propertyPath: useAllWheelDrive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498524662370696392, guid: 8499ae06cc7163c42bbb69a0a71dceb8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498524662370696392, guid: 8499ae06cc7163c42bbb69a0a71dceb8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3
+      objectReference: {fileID: 0}
     - target: {fileID: 7233678730683244597, guid: 8499ae06cc7163c42bbb69a0a71dceb8, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776195178575098172, guid: 8499ae06cc7163c42bbb69a0a71dceb8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8150016919713926110, guid: 8499ae06cc7163c42bbb69a0a71dceb8, type: 3}
       propertyPath: m_LocalPosition.x
