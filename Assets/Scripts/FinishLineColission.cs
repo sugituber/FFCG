@@ -3,8 +3,8 @@ using UnityEngine;
 public class FinishLineColission : MonoBehaviour
 {
     public static FinishLineColission instance;
-    public Transform car;
-    private Collider finishblock;
+    public Camera carCam;
+    public Camera finishCam;
     public TimeLogic TimerOn;
     private bool finished = false;
 
@@ -14,6 +14,8 @@ public class FinishLineColission : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            carCam.enabled = true;
+            finishCam.enabled = false;
         }
     }
 
@@ -27,6 +29,8 @@ public class FinishLineColission : MonoBehaviour
     {
         TimerOn.TimeRunning = false;
         finished = true;
+        carCam.enabled = false;
+        finishCam.enabled = true;
         Debug.Log("FINISH!");
     }
     
