@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class CarController : MonoBehaviour
 {
@@ -42,9 +43,12 @@ public class CarController : MonoBehaviour
     // If both false, it defaults to Front Wheel Drive
 
     [Header("Car Stats")]
-    public float accelModifier = 1f;
-    public float gripModifier = 1f;
-    public float offroadModifier = 1f;
+    public float accelModifier;
+    public float gripModifier;
+    public float offroadModifier;
+    public Slider[] modifierSliders;
+    private int modifierMaxPoints = 10;
+    private int modifierSpentPoints = 0;
 
     [Header("Debug")]
     public bool showGizmos = true;
@@ -63,13 +67,50 @@ public class CarController : MonoBehaviour
 
     void Start()
     {
+        if (instance == null) instance = this;
         rb.centerOfMass = centerOfMass;
-        if (instance == null)
+        accelModifier = 3f;
+        gripModifier = 3f;
+        offroadModifier = 3f;
+        foreach (Slider slider in modifierSliders)
         {
-            instance = this;
+            slider.wholeNumbers = true;
+            slider.maxValue = modifierMaxPoints;
+            slider.value = 3f;
+
+            slider.onValueChanged.AddListener((val) => OnSliderValueChanged(slider, val));
+
         }
+
     }
-    
+
+    private void OnSliderValueChanged(Slider targetSlider, float newValue)
+    {
+        int pointsSpent = 0;
+        foreach (Slider slider in modifierSliders)
+        {
+            if (slider != targetSlider)
+            {
+                pointsSpent += (int) slider.value;
+            }
+        }
+
+        int availablePoints = modifierMaxPoints - pointsSpent;
+
+        if (newValue > availablePoints)
+        {
+            targetSlider.value = availablePoints;
+        }
+        
+        modifierSpentPoints = 0;
+        
+        foreach (Slider slider in modifierSliders)
+        {
+            modifierSpentPoints += (int)slider.value;
+        }
+        
+        int pointsRemaining = modifierMaxPoints - modifierSpentPoints;
+    }
 
     private void OnTriggerEnter(Collider collider)
     {
@@ -165,7 +206,7 @@ public class CarController : MonoBehaviour
         Vector3 tireRight = tire.right;
         float tireSidewaysVelocity = Vector3.Dot(tireRight, tireWorldVelocity);
         
-        float desiredVelocityChange = -tireSidewaysVelocity * tireGripFactor * gripModifier;
+        float desiredVelocityChange = -tireSidewaysVelocity * tireGripFactor * (gripModifier + 2f) / 10f;
         float steerForceVal = desiredVelocityChange / Time.fixedDeltaTime * tireMass;
         
         Vector3 steeringForce = tireRight * steerForceVal;
@@ -187,11 +228,11 @@ public class CarController : MonoBehaviour
 
             if (canAccelerate)
             {
-                accelForceVector = tireForward * moveInput.y * accelForce * accelModifier;
+                accelForceVector = tireForward * moveInput.y * accelForce * (accelModifier + 2f) / 10f;
                 rb.AddForceAtPosition(accelForceVector, tire.position);
                 if (hit.collider.tag.Equals("Penalty"))
                 {
-                    rb.AddForce(-rb.linearVelocity * accelPenalty * offroadModifier);
+                    rb.AddForce(-rb.linearVelocity * accelPenalty * (offroadModifier + 2f) / 10f);
                 }
             }
         }

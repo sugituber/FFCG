@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class RaceStart : MonoBehaviour
 {
@@ -41,6 +43,10 @@ public class RaceStart : MonoBehaviour
     {
         if (raceStarted)
         {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                SceneManager.LoadScene("Main_Menu");
+            }
             raceTime += Time.deltaTime;
             int min = (int) (raceTime/60f);
             int sec = (int) (raceTime % 60f);

@@ -1624,9 +1624,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 360757121}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
-  m_Value: 1
+  m_MaxValue: 10
+  m_WholeNumbers: 1
+  m_Value: 3
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -2015,9 +2015,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1219733990}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
-  m_Value: 1
+  m_MaxValue: 10
+  m_WholeNumbers: 1
+  m_Value: 3
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -4450,6 +4450,22 @@ PrefabInstance:
       propertyPath: accelPenalty
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 5418219464483935768, guid: 6fa3fb4dfc3bd4640b3a77b2fe638928, type: 3}
+      propertyPath: modifierSliders.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418219464483935768, guid: 6fa3fb4dfc3bd4640b3a77b2fe638928, type: 3}
+      propertyPath: 'modifierSliders.Array.data[0]'
+      value: 
+      objectReference: {fileID: 561670079}
+    - target: {fileID: 5418219464483935768, guid: 6fa3fb4dfc3bd4640b3a77b2fe638928, type: 3}
+      propertyPath: 'modifierSliders.Array.data[1]'
+      value: 
+      objectReference: {fileID: 459910706}
+    - target: {fileID: 5418219464483935768, guid: 6fa3fb4dfc3bd4640b3a77b2fe638928, type: 3}
+      propertyPath: 'modifierSliders.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1454631073}
     - target: {fileID: 6498524662370696392, guid: 6fa3fb4dfc3bd4640b3a77b2fe638928, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5681,9 +5697,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 592958639}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
-  m_Value: 1
+  m_MaxValue: 10
+  m_WholeNumbers: 1
+  m_Value: 3
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
