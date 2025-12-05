@@ -4,14 +4,18 @@ using System.Collections;
 public class TimeLogic : MonoBehaviour
 {
     public TMPro.TextMeshProUGUI countdownText;
-    public CarController car;
     public bool TimeRunning = false;
     private float elapsedTime = 0f;
+    private Rigidbody rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Debug.Log("RaceStart Start() is running!");
-        car.enabled = false;
+        if (CarController.instance != null)
+        {
+            rb = CarController.instance.GetComponent<Rigidbody>();
+            rb.isKinematic = true;
+        }
         StartCoroutine(StartCountdown());
     }
 
@@ -28,7 +32,10 @@ public class TimeLogic : MonoBehaviour
 
         countdownText.text = "START!";
         TimeRunning = true;
-        car.enabled = true;
+        if (rb != null)
+        {
+            rb.isKinematic = false;
+        }
         StartTimer();
 
         yield return new WaitForSeconds(1f);
