@@ -4,6 +4,7 @@ using UnityEngine;
 public class TrackManager : MonoBehaviour
 {
     public Transform TracksFolder;
+    public TMPro.TextMeshProUGUI track;
     public List<Transform> trackList = new List<Transform>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -13,7 +14,7 @@ public class TrackManager : MonoBehaviour
         {
             trackList.Add(child);
         }
-
+        
         Debug.Log("Tracks found: " + trackList.Count);
     }
 
