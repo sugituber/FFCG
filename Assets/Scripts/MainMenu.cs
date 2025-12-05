@@ -5,7 +5,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("Sara_testing");
+        SceneManager.LoadScene("TimeTest");
     }
 
     public void QuitGame()
