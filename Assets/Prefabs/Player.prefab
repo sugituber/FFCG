@@ -274,7 +274,7 @@ Transform:
   m_GameObject: {fileID: 3183656646138820458}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -251.82, y: 0, z: -49.09}
   m_LocalScale: {x: 1, y: 0.36571428, z: 1.7142859}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -468,9 +468,13 @@ MonoBehaviour:
   tireMass: 100
   accelSpeed: 20
   accelForce: 2000
+  accelPenalty: 0.1
   airDrag: 0.02
   useAllWheelDrive: 1
   useRearWheelDrive: 0
+  accelModifier: 1
+  gripModifier: 1
+  offroadModifier: 1
   showGizmos: 1
   forceVisualScale: 2000
 --- !u!1 &3782628357672687037
@@ -535,7 +539,7 @@ Transform:
   m_GameObject: {fileID: 5288859681982423306}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -253.4, y: 0, z: -56.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
