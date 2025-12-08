@@ -334,8 +334,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0dbf63c4be024049b93cea005bc7d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpeedBoost
-  boostMultiplier: 2
+  boostAmount: 2
   boostDuration: 3
+  fovIncrease: 15
+  fovSpeed: 5
 --- !u!1 &6239872418175899043
 GameObject:
   m_ObjectHideFlags: 0
