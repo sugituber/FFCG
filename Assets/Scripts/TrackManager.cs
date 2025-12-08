@@ -22,7 +22,7 @@ public class TrackManager : MonoBehaviour
         }
         
         Debug.Log("Tracks found: " + trackList.Count);
-        DisplayTracks();
+        // DisplayTracks();
         TrackButton();
     }
 
@@ -48,11 +48,13 @@ public class TrackManager : MonoBehaviour
     {
         foreach (Transform t in trackList)
         {
+            Transform trackRef = t; // <-- local copy
+            Debug.Log("button here");
             GameObject button = Instantiate(buttonPrefab, buttonParent);
-            button.GetComponentInChildren<TextMeshProUGUI>().text = t.name;
+            button.GetComponentInChildren<TextMeshProUGUI>().text = trackRef.name;
             button.GetComponent<Button>().onClick.AddListener(() =>
             {
-                Debug.Log("Clicked track: " + t.name);
+                Debug.Log("Clicked track: " + trackRef.name);
             });
         }
     }
