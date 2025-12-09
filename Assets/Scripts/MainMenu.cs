@@ -5,7 +5,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("TimeTest");
+        SceneManager.LoadScene("TrackSelection");
     }
 
     public void QuitGame()
