@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TrackManager : MonoBehaviour
 {
@@ -54,6 +55,7 @@ public class TrackManager : MonoBehaviour
             button.GetComponentInChildren<TextMeshProUGUI>().text = trackRef.name;
             button.GetComponent<Button>().onClick.AddListener(() =>
             {
+                SceneManager.LoadScene(trackRef.name);
                 Debug.Log("Clicked track: " + trackRef.name);
             });
         }

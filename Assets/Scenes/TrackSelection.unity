@@ -631,7 +631,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1309072849}
   m_Layer: 0
-  m_Name: newTrack
+  m_Name: newTrackTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -789,7 +789,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2137874023}
   m_Layer: 0
-  m_Name: AlphaTrack
+  m_Name: TimeTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
