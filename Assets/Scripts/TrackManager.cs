@@ -14,6 +14,8 @@ public class TrackManager : MonoBehaviour
     public GameObject buttonPrefab;       // <-- Your UI button prefab
     public Transform buttonParent;        // <-- A UI Panel or Vertical Layout Group
 
+    public Image previewUI;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -58,6 +60,12 @@ public class TrackManager : MonoBehaviour
                 SceneManager.LoadScene(trackRef.name);
                 Debug.Log("Clicked track: " + trackRef.name);
             });
+
+            TrackPreviewHover hover = button.AddComponent<TrackPreviewHover>();
+            hover.previewImg = previewUI;
+            TrackInfo info = trackRef.GetComponent<TrackInfo>();
+            if (info != null)
+                hover.previewSprite = info.previewImage;
         }
     }
 }
