@@ -6,7 +6,8 @@ using System.Collections.Generic;
 public class CarController : MonoBehaviour
 {
     public static CarController instance;
-    private Vector2 moveInput; 
+    private Vector2 moveInput;
+    private bool brakeInput;
     private float currentSteerAngle;
 
     [Header("Refs")]
@@ -33,8 +34,8 @@ public class CarController : MonoBehaviour
     [Header("Engine")]
     public float accelSpeed = 30f; // Max Speed
     public float accelForce = 2000f;
-    public float accelPenalty = 0.1f;
-    [Range(0f, 1f)] public float airDrag = 0.02f; // Stops car from coasting forever
+    public float accelPenalty = 200f;
+    public float airDrag = 200f; // Stops car from coasting forever
 
     [Header("Drive Type")]
     public bool useAllWheelDrive = true;
@@ -69,7 +70,6 @@ public class CarController : MonoBehaviour
             instance = this;
         }
     }
-    
 
     private void OnTriggerEnter(Collider collider)
     {
@@ -82,6 +82,7 @@ public class CarController : MonoBehaviour
 
     void FixedUpdate()
     {
+        Debug.Log(moveInput);
         // 1. Determine Drive Type
         bool frontPower = useAllWheelDrive || (!useRearWheelDrive); // Default to FWD if nothing selected
         bool rearPower = useAllWheelDrive || useRearWheelDrive;
@@ -181,19 +182,24 @@ public class CarController : MonoBehaviour
             bool canAccelerate = false;
 
             if (moveInput.y > 0) // Moving Forward
+            {
                 canAccelerate = currentSpeed < accelSpeed;
+            }
             else if (moveInput.y < 0) // Reversing
+            {
                 canAccelerate = currentSpeed > -accelSpeed;
+            }
 
             if (canAccelerate)
             {
                 accelForceVector = tireForward * moveInput.y * accelForce * accelModifier;
                 rb.AddForceAtPosition(accelForceVector, tire.position);
-                if (hit.collider.tag.Equals("Penalty"))
-                {
-                    rb.AddForce(-rb.linearVelocity * accelPenalty * offroadModifier);
-                }
             }
+        }
+        if (hit.collider.tag.Equals("Penalty"))
+        {
+            rb.AddForce(-rb.linearVelocity * accelPenalty * offroadModifier);
+            Debug.Log("Penalty");
         }
 
         // Save Debug Data
@@ -212,21 +218,6 @@ public class CarController : MonoBehaviour
         moveInput = ctx.ReadValue<Vector2>();
     }
 
-    public void ChangeCarStat(Slider slider)
-    {
-        if (slider.name.Equals("Acceleration"))
-        {
-            accelModifier = slider.value;
-        }
-        else if (slider.name.Equals("Grip"))
-        {
-            gripModifier = slider.value;
-        }
-        else if (slider.name.Equals("Off-road"))
-        {
-            offroadModifier = slider.value;
-        }
-    }
     void OnDrawGizmos()
     {
         if (!showGizmos || rb == null) return;
