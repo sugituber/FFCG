@@ -47,11 +47,22 @@ public class CarChoiceManager : MonoBehaviour
                 Debug.Log("Clicked on car: " + carRef.name);
                 nextbutton.interactable = true;
             });
+
+            CarPreview carhover = button.AddComponent<CarPreview>();
+        }
+
+        if (nextbutton.interactable == true)
+        {
+            OnNext();
         }
     }
 
     void OnNext()
     {
-        
+        nextbutton.GetComponent<Button>().onClick.AddListener(() =>
+        {
+            Debug.Log("Next thingy:D");
+            // SceneManager.LoadScene("");
+        });
     }
 }

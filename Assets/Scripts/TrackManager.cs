@@ -35,18 +35,6 @@ public class TrackManager : MonoBehaviour
         
     }
 
-    void DisplayTracks()
-    {
-        string textOutput = "";
-        foreach (Transform t in trackList)
-        {
-            textOutput += t.name + "\n";
-            Debug.Log("In here");
-        }
-        track.text = textOutput;
-        Debug.Log("Here");
-    }
-
     void TrackButton()
     {
         foreach (Transform t in trackList)
