@@ -45,8 +45,10 @@ public class TrackManager : MonoBehaviour
             button.GetComponentInChildren<TextMeshProUGUI>().text = trackRef.name;
             button.GetComponent<Button>().onClick.AddListener(() =>
             {
-                SceneManager.LoadScene(trackRef.name);
+                // SceneManager.LoadScene(trackRef.name);
+                GameFlow.Instance.selectedTrack = trackRef.name;
                 Debug.Log("Clicked track: " + trackRef.name);
+                SceneManager.LoadScene("CarChoice");
             });
 
             TrackPreviewHover hover = button.AddComponent<TrackPreviewHover>();

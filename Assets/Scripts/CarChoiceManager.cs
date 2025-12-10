@@ -26,13 +26,15 @@ public class CarChoiceManager : MonoBehaviour
 
         Carbuttons();
         nextbutton.interactable = false;
-        // nextbutton.onClick.AddListener(OnNext);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (nextbutton.interactable == true)
+        {
+            OnNext();
+        }
     }
 
     void Carbuttons()
@@ -45,16 +47,13 @@ public class CarChoiceManager : MonoBehaviour
             button.GetComponent<Button>().onClick.AddListener(() =>
             {
                 Debug.Log("Clicked on car: " + carRef.name);
+                GameFlow.Instance.selectedCar = carRef.name;
                 nextbutton.interactable = true;
             });
 
             CarPreview carhover = button.AddComponent<CarPreview>();
         }
 
-        if (nextbutton.interactable == true)
-        {
-            OnNext();
-        }
     }
 
     void OnNext()
@@ -62,7 +61,9 @@ public class CarChoiceManager : MonoBehaviour
         nextbutton.GetComponent<Button>().onClick.AddListener(() =>
         {
             Debug.Log("Next thingy:D");
+            Debug.Log("Loading track: " + GameFlow.Instance.selectedTrack);
             // SceneManager.LoadScene("");
+            SceneManager.LoadScene(GameFlow.Instance.selectedTrack);
         });
     }
 }
