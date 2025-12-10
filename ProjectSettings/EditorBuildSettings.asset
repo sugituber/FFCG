@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/newTrackTest.unity
     guid: d5466f1fd6f7d4f43971aea059cd7f71
   - enabled: 1
+    path: Assets/Scenes/Settings_help.unity
+    guid: ed598d7af29ab784689ea46fd9f9fe71
+  - enabled: 0
     path: Assets/Scenes/Sara_testing.unity
     guid: 45500259523149747823f98ba6695ae8
   m_configObjects:
