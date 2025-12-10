@@ -26,15 +26,17 @@ public class CarChoiceManager : MonoBehaviour
 
         Carbuttons();
         nextbutton.interactable = false;
+
+        if (nextbutton.interactable == true)
+        {
+            OnNext();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (nextbutton.interactable == true)
-        {
-            OnNext();
-        }
+    
     }
 
     void Carbuttons()

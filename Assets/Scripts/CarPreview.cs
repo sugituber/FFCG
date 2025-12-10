@@ -7,7 +7,7 @@ public class CarPreview : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public string carName;
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("hover here here");
+        // Debug.Log("hover here here");
     }
 
     public void OnPointerExit(PointerEventData eventData)
