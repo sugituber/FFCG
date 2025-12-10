@@ -199,7 +199,7 @@ public class CarController : MonoBehaviour
         if (hit.collider.tag.Equals("Penalty"))
         {
             rb.AddForce(-rb.linearVelocity * accelPenalty * offroadModifier);
-            Debug.Log("Penalty");
+            // Debug.Log("Penalty");
         }
 
         // Save Debug Data
