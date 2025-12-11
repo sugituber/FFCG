@@ -4,7 +4,7 @@ using System.Collections;
 public class SpeedBoost : MonoBehaviour
 {
     public float boostAmount = 1.5f;
-    public float boostDuration = 3f;
+    public float boostDuration = 1f;
     public float fovIncrease = 15f;
     public float fovSpeed = 5f;
 
@@ -23,9 +23,11 @@ public class SpeedBoost : MonoBehaviour
     IEnumerator ApplyBoost(CarController car)
     {
         car.accelModifier += boostAmount;
+        car.accelSpeed += 3f;
 
         yield return new WaitForSeconds(boostDuration);
         car.accelModifier -= boostAmount;
+        car.accelSpeed -= 3f;
     }
 
     IEnumerator FOVEffect(float duration)

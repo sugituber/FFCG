@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void PlayGame()
+    public void TrackSelect()
     {
         SceneManager.LoadScene("TrackSelection");
     }
@@ -12,5 +12,15 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Quit");
+    }
+
+    public void LoadSettings()
+    {
+        SceneManager.LoadScene("Settings_help");
+    }
+
+    public void PlayGame()
+    {
+        SceneManager.LoadScene("TimeTest");
     }
 }
