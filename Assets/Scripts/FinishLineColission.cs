@@ -11,6 +11,7 @@ public class FinishLineColission : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        carCam = CarController.instance.transform.parent.GetChild(0).GetChild(0).GetComponent<Camera>();
         if (instance == null)
         {
             instance = this;

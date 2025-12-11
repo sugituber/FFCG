@@ -480,7 +480,7 @@ GameObject:
   - component: {fileID: 1383342301541297782}
   m_Layer: 0
   m_Name: CarBase
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -674,6 +674,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: ca26a905-11a2-485c-97da-f86337cd9095
     m_ActionName: 'Drive/Brake[/DualSenseGamepadHID/buttonSouth,/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3637640705870019053}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4a2769c1-a5c5-4f46-8531-e8ee58183524
+    m_ActionName: 'Drive/Restart[/Keyboard/tab,/DualSenseGamepadHID/buttonNorth]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Drive
