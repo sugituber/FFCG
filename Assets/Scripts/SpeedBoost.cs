@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SpeedBoost : MonoBehaviour
 {
-    public float boostAmount = 1.5f;
+    public float boostAmount = 0.2f;
     public float boostDuration = 1f;
     public float fovIncrease = 15f;
     public float fovSpeed = 5f;
