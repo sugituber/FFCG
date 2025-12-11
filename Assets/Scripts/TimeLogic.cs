@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.InputSystem;
 
 public class TimeLogic : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class TimeLogic : MonoBehaviour
     public bool TimeRunning = false;
     private float elapsedTime = 0f;
     private Rigidbody rb;
+    private Vector3 startPosition;
+    private Quaternion startRotation;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,6 +19,8 @@ public class TimeLogic : MonoBehaviour
             rb = CarController.instance.GetComponent<Rigidbody>();
             rb.isKinematic = true;
         }
+        startPosition = rb.transform.position;
+        startRotation = rb.transform.localRotation;
         StartCoroutine(StartCountdown());
     }
 
@@ -69,4 +74,18 @@ public class TimeLogic : MonoBehaviour
         return $"{min:00}:{sec:00}:{ms:000}";
     }
 
+    public void RestartTrack(InputAction.CallbackContext ctx)
+    {
+        if (TimeRunning)
+        {
+            TimeRunning = false;
+            elapsedTime = 0f;
+            rb.transform.position = startPosition;
+            rb.transform.localRotation = startRotation;
+            rb.isKinematic = true;
+            countdownText.gameObject.SetActive(true);
+            
+            StartCoroutine(StartCountdown());
+        }
+    }
 }

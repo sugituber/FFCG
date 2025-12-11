@@ -3,15 +3,19 @@ using System.Collections;
 
 public class RaceStart : MonoBehaviour
 {
-    
     public TMPro.TextMeshProUGUI countdownText;
     public TMPro.TextMeshProUGUI timerText;
     private float raceTime = 0f;
     public bool raceStarted = false;
     public CarController car;
+    public static RaceStart instance;
 
     void Start()
-    { 
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
         car.enabled = false;
         StartCoroutine(StartCountdown());
     }
