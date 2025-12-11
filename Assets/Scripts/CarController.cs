@@ -82,7 +82,6 @@ public class CarController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(moveInput);
         // 1. Determine Drive Type
         bool frontPower = useAllWheelDrive || (!useRearWheelDrive); // Default to FWD if nothing selected
         bool rearPower = useAllWheelDrive || useRearWheelDrive;
