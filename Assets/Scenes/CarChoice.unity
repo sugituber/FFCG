@@ -459,10 +459,60 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CarChoiceManager
   CarFolder: {fileID: 381750600}
-  carlist: []
+  carlist:
+  - {fileID: 5025313518619460299, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
+  - {fileID: 3829095485793603438, guid: 9c84e2ed003930e48808c999041ecd9c, type: 3}
+  - {fileID: 5458290772115760608, guid: 8da5ff3740feb29499e9fbb747a81674, type: 3}
+  - {fileID: 8122797434550988027, guid: 589b051bbb12d0540914ad9bb6f4e85a, type: 3}
   carbuttonprefab: {fileID: 7061761016280928918, guid: e1441dba8364abc47ba07a4eeb393265, type: 3}
   carbuttonParent: {fileID: 1139172884}
   nextbutton: {fileID: 1404039116}
+--- !u!1 &421882441
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 421882443}
+  - component: {fileID: 421882442}
+  m_Layer: 0
+  m_Name: GameFlow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &421882442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421882441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 402d5405e2039234ebdcabb80eacb0b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameFlow
+  selectedTrack: 
+  selectedCar: {fileID: 0}
+--- !u!4 &421882443
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421882441}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 137.0615, y: 222.12817, z: 193.33421}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &580886091
 GameObject:
   m_ObjectHideFlags: 0
@@ -1816,3 +1866,4 @@ SceneRoots:
   - {fileID: 939930050}
   - {fileID: 381750600}
   - {fileID: 282016979}
+  - {fileID: 421882443}

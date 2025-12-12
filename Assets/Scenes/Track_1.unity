@@ -919,6 +919,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeLogic
   countdownText: {fileID: 227723129}
   TimeRunning: 1
+  startCar: {fileID: 0}
 --- !u!1001 &228040477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2397,13 +2398,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarDrift
       objectReference: {fileID: 0}
+    - target: {fileID: 7161066630516345702, guid: 9c84e2ed003930e48808c999041ecd9c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 7182309526562694099, guid: 9c84e2ed003930e48808c999041ecd9c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.15272
       objectReference: {fileID: 0}
     - target: {fileID: 7182309526562694099, guid: 9c84e2ed003930e48808c999041ecd9c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.52327
+      value: 1.87
       objectReference: {fileID: 0}
     - target: {fileID: 7182309526562694099, guid: 9c84e2ed003930e48808c999041ecd9c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3724,6 +3729,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1447179583}
   m_SourcePrefab: {fileID: 100100000, guid: c19fc972f606758478ef488482fc968f, type: 3}
+--- !u!1 &1125902096 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3829095485793603438, guid: 9c84e2ed003930e48808c999041ecd9c, type: 3}
+  m_PrefabInstance: {fileID: 821852025}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1178893465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4919,6 +4929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeLogic
   countdownText: {fileID: 227723129}
   TimeRunning: 0
+  startCar: {fileID: 1125902096}
 --- !u!4 &1696247735
 Transform:
   m_ObjectHideFlags: 0

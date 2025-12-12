@@ -5,7 +5,9 @@ public class GameFlow : MonoBehaviour
     public static GameFlow Instance;
 
     public string selectedTrack;
-    public string selectedCar;
+    public GameObject selectedCar;
+
+    public GameObject currentCar;
 
     private void Awake()
     {

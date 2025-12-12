@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class CarChoiceManager : MonoBehaviour
 {
     public Transform CarFolder;
-    public List<Transform> carlist = new List<Transform>();
+    public List<GameObject> carlist = new List<GameObject>();
 
     public GameObject carbuttonprefab;       // <-- Your UI button prefab
     public Transform carbuttonParent;        // <-- A UI Panel or Vertical Layout Group
@@ -19,7 +19,7 @@ public class CarChoiceManager : MonoBehaviour
     {
         foreach (Transform child in CarFolder)
         {
-            carlist.Add(child);
+       //     carlist.Add(child);
         }
         
         Debug.Log("Cars presets found: " + carlist.Count);
@@ -41,15 +41,15 @@ public class CarChoiceManager : MonoBehaviour
 
     void Carbuttons()
     {
-        foreach (Transform car in carlist)
+        foreach (GameObject car in carlist)
         {
-            Transform carRef = car;  // <-- local copy
+            GameObject carRef = car;  // <-- local copy
             GameObject button = Instantiate(carbuttonprefab, carbuttonParent);
             button.GetComponentInChildren<TextMeshProUGUI>().text = carRef.name;
             button.GetComponent<Button>().onClick.AddListener(() =>
             {
                 Debug.Log("Clicked on car: " + carRef.name);
-                GameFlow.Instance.selectedCar = carRef.name;
+                GameFlow.Instance.selectedCar = carRef;
                 nextbutton.interactable = true;
                 OnNext();
             });
@@ -58,6 +58,24 @@ public class CarChoiceManager : MonoBehaviour
         }
 
     }
+    // void Carbuttons()
+    // {
+    //     foreach (Transform car in CarFolder)
+    //     {
+    //         GameObject button = Instantiate(carbuttonprefab, carbuttonParent);
+    //         button.GetComponentInChildren<TextMeshProUGUI>().text = car.name;
+
+    //         button.GetComponent<Button>().onClick.AddListener(() =>
+    //         {
+    //             Debug.Log("Selected car: " + car.name);
+    //             GameFlow.Instance.selectedCar = car.name;
+    //             nextbutton.interactable = true;
+    //             OnNext();
+    //         });
+
+    //         button.AddComponent<CarPreview>(); // Optional: preview functionality
+    //     }
+    // }
 
     void OnNext()
     {

@@ -1,18 +1,24 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 public class TimeLogic : MonoBehaviour
 {
     public TMPro.TextMeshProUGUI countdownText;
     public bool TimeRunning = false;
     private float elapsedTime = 0f;
+
+    public GameObject startCar;
     private Rigidbody rb;
     private Vector3 startPosition;
     private Quaternion startRotation;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
+
+
         Debug.Log("RaceStart Start() is running!");
         if (CarController.instance != null)
         {
@@ -21,6 +27,11 @@ public class TimeLogic : MonoBehaviour
         }
         startPosition = rb.transform.position;
         startRotation = rb.transform.localRotation;
+
+        startCar.SetActive(false);
+        GameObject newCar = Instantiate(GameFlow.Instance.selectedCar, startPosition, startRotation);
+        GameFlow.Instance.currentCar = newCar;
+        
         StartCoroutine(StartCountdown());
     }
 
