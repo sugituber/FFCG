@@ -2,37 +2,22 @@ using UnityEngine;
 
 public class FinishLineColission : MonoBehaviour
 {
-    public static FinishLineColission instance;
-    public Camera carCam;
-    public Camera finishCam;
     public TimeLogic TimerOn;
+    public float timeToBeat = 24.006f;
+
     private bool finished = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        carCam = CarController.instance.transform.parent.GetChild(0).GetChild(0).GetComponent<Camera>();
-        if (instance == null)
+        if (finished) return;
+
+        if (other.CompareTag("Player"))
         {
-            instance = this;
-            carCam.enabled = true;
-            finishCam.enabled = false;
+            Debug.Log("Finish line triggered");
+            finished = true;
+            TimerOn.StopTimer();
+            FinishMenu.instance.ShowFinishScreen(timeToBeat);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
-
-    public void CrossFinish()
-    {
-        TimerOn.TimeRunning = false;
-        finished = true;
-        carCam.enabled = false;
-        finishCam.enabled = true;
-        Debug.Log("FINISH!");
-    }
-    
 }

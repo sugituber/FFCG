@@ -71,15 +71,6 @@ public class CarController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider collider)
-    {
-        if (collider.CompareTag("Finish"))
-        {
-            // Debug.Log("Here");
-            FinishLineColission.instance.CrossFinish();
-        }
-    }
-
     void FixedUpdate()
     {
         // Debug.Log(moveInput);

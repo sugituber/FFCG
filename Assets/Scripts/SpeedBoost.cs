@@ -20,16 +20,21 @@ public class SpeedBoost : MonoBehaviour
         }
     }
 
-    IEnumerator ApplyBoost(CarController car)
-    {
-        car.accelModifier += boostAmount;
-        car.accelSpeed += 3f;
+IEnumerator ApplyBoost(CarController car)
+{
+    //we save the original values
+    float originalForce = car.accelForce;
+    float originalModifier = car.accelModifier;
 
-        yield return new WaitForSeconds(boostDuration);
-        car.accelModifier -= boostAmount;
-        car.accelSpeed -= 3f;
-    }
+    car.accelForce *= 1.05f;
+    car.accelModifier *= 1.02f;
 
+    yield return new WaitForSeconds(boostDuration);
+
+    //we restore the values
+    car.accelForce = originalForce;
+    car.accelModifier = originalModifier;
+}
     IEnumerator FOVEffect(float duration)
     {
         Camera cam = Camera.main;
