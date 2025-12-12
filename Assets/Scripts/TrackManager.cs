@@ -46,8 +46,13 @@ public class TrackManager : MonoBehaviour
             button.GetComponent<Button>().onClick.AddListener(() =>
             {
                 // SceneManager.LoadScene(trackRef.name);
-                GameFlow.Instance.selectedTrack = trackRef.name;
-                Debug.Log("Clicked track: " + trackRef.name);
+                TrackInfo info = trackRef.GetComponent<TrackInfo>();
+                if (info != null)
+                {
+                    GameFlow.Instance.selectedTrack = info.SceneName;
+                    Debug.Log("Clicked track: " + trackRef.name);
+                    Debug.Log("SceneName: " + info.SceneName);
+                }
                 SceneManager.LoadScene("CarChoice");
             });
 
