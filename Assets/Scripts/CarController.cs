@@ -71,15 +71,6 @@ public class CarController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider collider)
-    {
-        if (collider.CompareTag("Finish"))
-        {
-            // Debug.Log("Here");
-            FinishLineColission.instance.CrossFinish();
-        }
-    }
-
     void FixedUpdate()
     {
         // Debug.Log(moveInput);
@@ -199,7 +190,7 @@ public class CarController : MonoBehaviour
         if (hit.collider.tag.Equals("Penalty"))
         {
             rb.AddForce(-rb.linearVelocity * accelPenalty * offroadModifier);
-            // Debug.Log("Penalty");
+            Debug.Log("Penalty");
         }
 
         // Save Debug Data

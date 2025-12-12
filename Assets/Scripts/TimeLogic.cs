@@ -99,4 +99,8 @@ public class TimeLogic : MonoBehaviour
             StartCoroutine(StartCountdown());
         }
     }
+        public float GetElapsedTime()
+    {
+        return elapsedTime;
+    }
 }
