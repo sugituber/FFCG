@@ -9,30 +9,30 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/Track_1.unity
-    guid: 9076533650c38d8469fd8653fb452a56
-  - enabled: 1
     path: Assets/Scenes/Main_Menu.unity
     guid: 756a1d6852b45f04d897ef63880f641a
-  - enabled: 1
-    path: Assets/Scenes/CarChoice.unity
-    guid: 141bf718398bd2f489d2d563b9239933
-  - enabled: 1
-    path: Assets/Scenes/Track_2.unity
-    guid: e73f2cc4dbc01354ea0ef2266ff2f3e2
   - enabled: 1
     path: Assets/Scenes/TrackSelection.unity
     guid: 6af34070c3ac60f4e89daf59db94cc0d
   - enabled: 1
+    path: Assets/Scenes/CarChoice.unity
+    guid: 141bf718398bd2f489d2d563b9239933
+  - enabled: 1
+    path: Assets/Scenes/Track_1.unity
+    guid: 9076533650c38d8469fd8653fb452a56
+  - enabled: 1
+    path: Assets/Scenes/Track_2.unity
+    guid: e73f2cc4dbc01354ea0ef2266ff2f3e2
+  - enabled: 1
     path: Assets/Scenes/Track_3.unity
     guid: ecc151a3d3475f345b6c29a3d7993153
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/FAILURE2.unity
     guid: 59628e1eff36cc64da7a4ccb5e403cc8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/newTrackTest.unity
     guid: d5466f1fd6f7d4f43971aea059cd7f71
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Settings_help.unity
     guid: ed598d7af29ab784689ea46fd9f9fe71
   - enabled: 0

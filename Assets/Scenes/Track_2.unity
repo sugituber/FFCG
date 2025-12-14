@@ -2494,6 +2494,63 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1510088812073859564, guid: da717bb66a9b4664795cebcb717b70b7, type: 3}
+--- !u!1001 &532056532
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7218442825583391771, guid: 95ab6b766c919da44a83e22fffedb263, type: 3}
+      propertyPath: m_Name
+      value: Music-Ingame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694549933825811326, guid: 95ab6b766c919da44a83e22fffedb263, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 354.19598
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694549933825811326, guid: 95ab6b766c919da44a83e22fffedb263, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 240.7372
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694549933825811326, guid: 95ab6b766c919da44a83e22fffedb263, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.1901
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694549933825811326, guid: 95ab6b766c919da44a83e22fffedb263, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694549933825811326, guid: 95ab6b766c919da44a83e22fffedb263, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694549933825811326, guid: 95ab6b766c919da44a83e22fffedb263, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694549933825811326, guid: 95ab6b766c919da44a83e22fffedb263, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694549933825811326, guid: 95ab6b766c919da44a83e22fffedb263, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694549933825811326, guid: 95ab6b766c919da44a83e22fffedb263, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694549933825811326, guid: 95ab6b766c919da44a83e22fffedb263, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 95ab6b766c919da44a83e22fffedb263, type: 3}
 --- !u!1001 &572805515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2707,19 +2764,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1383342301541297782, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -95.38793
+      value: 91.27
       objectReference: {fileID: 0}
     - target: {fileID: 1383342301541297782, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 148.12349
+      value: 0.87
       objectReference: {fileID: 0}
     - target: {fileID: 1383342301541297782, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 264.82648
+      value: 342.46
       objectReference: {fileID: 0}
     - target: {fileID: 1383342301541297782, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1383342301541297782, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2727,7 +2784,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1383342301541297782, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1383342301541297782, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
       propertyPath: m_LocalRotation.z
@@ -2739,7 +2796,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1383342301541297782, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 1383342301541297782, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -2754,58 +2811,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
---- !u!1 &728847902 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5025313518619460299, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
-  m_PrefabInstance: {fileID: 728847901}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &730191630
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 730191632}
-  - component: {fileID: 730191631}
-  m_Layer: 0
-  m_Name: TimeLogicObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &730191631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 730191630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca3ec117247683a43949a8eaa895d4ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TimeLogic
-  countdownText: {fileID: 0}
-  TimeRunning: 0
-  startCar: {fileID: 0}
---- !u!4 &730191632
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 730191630}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -175.81721, y: 0, z: 3220.8955}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &764718037
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3202,6 +3207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 819588512}
   - component: {fileID: 819588511}
+  - component: {fileID: 819588513}
   m_Layer: 0
   m_Name: FinishLine
   m_TagString: Untagged
@@ -3223,6 +3229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FinishLineColission
   TimerOn: {fileID: 1084408036}
   timeToBeat: 24.006
+  finishCamera: {fileID: 257803713}
 --- !u!4 &819588512
 Transform:
   m_ObjectHideFlags: 0
@@ -3232,12 +3239,33 @@ Transform:
   m_GameObject: {fileID: 819588510}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 144, y: 0, z: -90}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 145.62, y: 0, z: -88.52}
+  m_LocalScale: {x: 12.95, y: 11.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &819588513
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819588510}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &823538828
 GameObject:
   m_ObjectHideFlags: 0
@@ -4798,7 +4826,7 @@ MonoBehaviour:
   dropDuration: 0.4
   hiddenY: 600
   shownY: -50
-  timer: {fileID: 730191631}
+  timer: {fileID: 0}
   carSelectSceneName: 
   trackSelectSceneName: 
 --- !u!4 &1074802225
@@ -4848,7 +4876,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeLogic
   countdownText: {fileID: 1871236842}
   TimeRunning: 0
-  startCar: {fileID: 728847902}
+  currCar: {fileID: 0}
+  rb: {fileID: 0}
+  startPos: {x: 0, y: 0, z: 0}
+  startRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &1084408037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4898,6 +4929,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 4a2769c1-a5c5-4f46-8531-e8ee58183524
     m_ActionName: 'Drive/Restart[/Keyboard/r]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1084408036}
+        m_TargetAssemblyTypeName: TimeLogic, Assembly-CSharp
+        m_MethodName: ExitTrack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 10874733-027c-4346-b5e2-9682c4e13f6f
+    m_ActionName: 'Drive/Exit[/Keyboard/escape,/DualSenseGamepadHID/start]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Drive
@@ -7581,7 +7628,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Time to Beat: 0:20:006'
+  m_text: 'Gold Medal: 28.121'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7944,7 +7991,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeLogic
   countdownText: {fileID: 1871236842}
   TimeRunning: 1
-  startCar: {fileID: 0}
+  currCar: {fileID: 0}
+  rb: {fileID: 0}
+  startPos: {x: 0, y: 0, z: 0}
+  startRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1871236844
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9156,7 +9206,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 486943995}
-  - {fileID: 730191632}
   - {fileID: 1074802225}
   - {fileID: 1084408038}
   - {fileID: 1261413201}
@@ -9166,3 +9215,4 @@ SceneRoots:
   - {fileID: 819588512}
   - {fileID: 1035020921}
   - {fileID: 728847901}
+  - {fileID: 532056532}

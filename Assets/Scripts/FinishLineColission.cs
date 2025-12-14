@@ -5,15 +5,21 @@ public class FinishLineColission : MonoBehaviour
     public TimeLogic TimerOn;
     public float timeToBeat = 24.006f;
 
+    public Camera finishCamera;
     private bool finished = false;
+
+    void Start()
+    {
+        finishCamera.enabled = false;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (finished) return;
 
-        if (other.CompareTag("Player"))
+        Debug.Log(other.tag);
+        if (other.tag == "Player")
         {
-            Debug.Log("Finish line triggered");
             finished = true;
             TimerOn.StopTimer();
             FinishMenu.instance.ShowFinishScreen(timeToBeat);

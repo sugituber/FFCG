@@ -2,36 +2,35 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class TimeLogic : MonoBehaviour
 {
     public TMPro.TextMeshProUGUI countdownText;
     public bool TimeRunning = false;
     private float elapsedTime = 0f;
-
-    public GameObject startCar;
-    private Rigidbody rb;
-    private Vector3 startPosition;
-    private Quaternion startRotation;
+    public CarController currCar;
+    public Rigidbody rb;
+    public Vector3 startPos;
+    public Quaternion startRot;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GameObject selCar = GameFlow.Instance.selectedCar;
+        currCar = selCar.GetComponentInChildren<CarController>();
+        CarController.instance.tireGripFactor = currCar.tireGripFactor;
+        CarController.instance.lowSpeedSteerAngle = currCar.lowSpeedSteerAngle;
+        CarController.instance.highSpeedSteerAngle = currCar.highSpeedSteerAngle;
+        CarController.instance.accelSpeed = currCar.accelSpeed;
+        CarController.instance.accelForce = currCar.accelForce;
+        CarController.instance.accelPenalty = currCar.accelPenalty;
+        CarController.instance.useAllWheelDrive = currCar.useAllWheelDrive;
+        CarController.instance.useRearWheelDrive = currCar.useRearWheelDrive;
 
+        rb = CarController.instance.GetComponent<Rigidbody>();
+        startPos = rb.transform.position;
+        startRot = rb.transform.localRotation;
 
-
-        Debug.Log("RaceStart Start() is running!");
-        if (CarController.instance != null)
-        {
-            rb = CarController.instance.GetComponent<Rigidbody>();
-            rb.isKinematic = true;
-        }
-        startPosition = rb.transform.position;
-        startRotation = rb.transform.localRotation;
-
-        startCar.SetActive(false);
-        GameObject newCar = Instantiate(GameFlow.Instance.selectedCar, startPosition, startRotation);
-        GameFlow.Instance.currentCar = newCar;
-        
         StartCoroutine(StartCountdown());
     }
 
@@ -41,17 +40,15 @@ public class TimeLogic : MonoBehaviour
 
         while (countdown > 0)
         {
+            rb.isKinematic = true;
             countdownText.text = countdown.ToString();
             yield return new WaitForSeconds(1f);
             countdown--;
         }
 
         countdownText.text = "START!";
+        rb.isKinematic = false;
         TimeRunning = true;
-        if (rb != null)
-        {
-            rb.isKinematic = false;
-        }
         StartTimer();
 
         yield return new WaitForSeconds(1f);
@@ -91,9 +88,9 @@ public class TimeLogic : MonoBehaviour
         {
             TimeRunning = false;
             elapsedTime = 0f;
-            rb.transform.position = startPosition;
-            rb.transform.localRotation = startRotation;
             rb.isKinematic = true;
+            rb.transform.position = startPos;
+            rb.transform.localRotation = startRot;
             countdownText.gameObject.SetActive(true);
             
             StartCoroutine(StartCountdown());
@@ -102,5 +99,10 @@ public class TimeLogic : MonoBehaviour
         public float GetElapsedTime()
     {
         return elapsedTime;
+    }
+
+    public void ExitTrack(InputAction.CallbackContext ctx)
+    {
+        SceneManager.LoadScene("Main_Menu");
     }
 }
