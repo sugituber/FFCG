@@ -1,0 +1,96 @@
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
+
+public class CarChoiceManager : MonoBehaviour
+{
+    public Transform CarFolder;
+    public List<GameObject> carlist = new List<GameObject>();
+
+    public GameObject carbuttonprefab;       // <-- Your UI button prefab
+    public Transform carbuttonParent;        // <-- A UI Panel or Vertical Layout Group
+
+    public Button nextbutton;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        foreach (Transform child in CarFolder)
+        {
+       //     carlist.Add(child);
+        }
+        
+        Debug.Log("Cars presets found: " + carlist.Count);
+
+        Carbuttons();
+        nextbutton.interactable = false;
+
+        // if (nextbutton.interactable == true)
+        // {
+        //     OnNext();
+        // }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+    
+    }
+
+    void Carbuttons()
+    {
+        foreach (GameObject car in carlist)
+        {
+            GameObject carRef = car;  // <-- local copy
+            GameObject button = Instantiate(carbuttonprefab, carbuttonParent);
+            button.GetComponentInChildren<TextMeshProUGUI>().text = carRef.name;
+            button.GetComponent<Button>().onClick.AddListener(() =>
+            {
+                Debug.Log("Clicked on car: " + carRef.name);
+                GameFlow.Instance.selectedCar = carRef;
+                nextbutton.interactable = true;
+                OnNext();
+            });
+
+            CarPreview carhover = button.AddComponent<CarPreview>();
+        }
+
+    }
+    // void Carbuttons()
+    // {
+    //     foreach (Transform car in CarFolder)
+    //     {
+    //         GameObject button = Instantiate(carbuttonprefab, carbuttonParent);
+    //         button.GetComponentInChildren<TextMeshProUGUI>().text = car.name;
+
+    //         button.GetComponent<Button>().onClick.AddListener(() =>
+    //         {
+    //             Debug.Log("Selected car: " + car.name);
+    //             GameFlow.Instance.selectedCar = car.name;
+    //             nextbutton.interactable = true;
+    //             OnNext();
+    //         });
+
+    //         button.AddComponent<CarPreview>(); // Optional: preview functionality
+    //     }
+    // }
+
+    void OnNext()
+    {
+        // nextbutton.GetComponent<Button>().onClick.AddListener(() =>
+        // {
+        //     Debug.Log("Next thingy:D");
+        //     Debug.Log("Loading track: " + GameFlow.Instance.selectedTrack);
+        //     // SceneManager.LoadScene("");
+        //     SceneManager.LoadScene(GameFlow.Instance.selectedTrack);
+        // });
+        nextbutton.onClick.RemoveAllListeners();
+        nextbutton.onClick.AddListener(() =>
+        {
+            Debug.Log("Loading track: " + GameFlow.Instance.selectedTrack);
+            SceneManager.LoadScene(GameFlow.Instance.selectedTrack);
+        });
+    }
+}

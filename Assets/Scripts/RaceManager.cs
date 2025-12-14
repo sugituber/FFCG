@@ -1,18 +1,21 @@
 using UnityEngine;
-using TMPro;
 using System.Collections;
 
 public class RaceStart : MonoBehaviour
 {
-    public TextMeshProUGUI countdownText;
-    public TextMeshProUGUI timerText;
+    public TMPro.TextMeshProUGUI countdownText;
+    public TMPro.TextMeshProUGUI timerText;
     private float raceTime = 0f;
-    private bool raceStarted = false;
+    public bool raceStarted = false;
     public CarController car;
+    public static RaceStart instance;
 
     void Start()
     {
-        Debug.Log("RaceStart Start() is running!");
+        if (instance == null)
+        {
+            instance = this;
+        }
         car.enabled = false;
         StartCoroutine(StartCountdown());
     }
@@ -22,6 +25,7 @@ public class RaceStart : MonoBehaviour
         int countdown = 3;
 
         while (countdown > 0)
+        
         {
             countdownText.text = countdown.ToString();
             yield return new WaitForSeconds(1f);
@@ -42,7 +46,10 @@ public class RaceStart : MonoBehaviour
         if (raceStarted)
         {
             raceTime += Time.deltaTime;
-            timerText.text = raceTime.ToString("F2");
+            int min = (int) (raceTime/60f);
+            int sec = (int) (raceTime % 60f);
+            int ms = (int) ((raceTime * 1000f) % 1000);
+            timerText.text = $"{min:00}:{sec:00}.{ms:000}";
         }
     }
 }
