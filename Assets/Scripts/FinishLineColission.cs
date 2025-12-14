@@ -14,6 +14,7 @@ public class FinishLineColission : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Finish line triggered");
+            
             finished = true;
             TimerOn.StopTimer();
             FinishMenu.instance.ShowFinishScreen(timeToBeat);

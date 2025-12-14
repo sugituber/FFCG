@@ -6,31 +6,21 @@ using Unity.VisualScripting;
 public class TimeLogic : MonoBehaviour
 {
     public TMPro.TextMeshProUGUI countdownText;
+    public GameObject newCar;
+    public Rigidbody rb;
     public bool TimeRunning = false;
     private float elapsedTime = 0f;
-
-    public GameObject startCar;
-    private Rigidbody rb;
-    private Vector3 startPosition;
-    private Quaternion startRotation;
+    public Vector3 startPosition;
+    public Quaternion startRotation;
+    public Camera finishCamera;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
-
-
-        Debug.Log("RaceStart Start() is running!");
-        if (CarController.instance != null)
-        {
-            rb = CarController.instance.GetComponent<Rigidbody>();
-            rb.isKinematic = true;
-        }
-        startPosition = rb.transform.position;
-        startRotation = rb.transform.localRotation;
-
-        startCar.SetActive(false);
+        finishCamera.enabled = false;
+        Debug.Log("Spawning One car");
         GameObject newCar = Instantiate(GameFlow.Instance.selectedCar, startPosition, startRotation);
         GameFlow.Instance.currentCar = newCar;
+        rb = newCar.GetComponentInChildren<Rigidbody>();
         
         StartCoroutine(StartCountdown());
     }

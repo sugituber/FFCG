@@ -9,14 +9,20 @@ public class Speedometer : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        car = CarController.instance.rb;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float forwardSpeed = Vector3.Dot(car.linearVelocity, car.transform.forward);
-        float speedValue = forwardSpeed * speedScale;
-        speedometer.text = Mathf.FloorToInt(speedValue).ToString();
+        if (CarController.instance.rb)
+        {
+            car = CarController.instance.rb;
+        }
+        if (car)
+        {
+            float forwardSpeed = Vector3.Dot(car.linearVelocity, car.transform.forward);
+            float speedValue = forwardSpeed * speedScale;
+            speedometer.text = Mathf.FloorToInt(speedValue).ToString();
+        }
     }
 }

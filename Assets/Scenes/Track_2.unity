@@ -2697,115 +2697,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694555633}
   m_CullTransparentMesh: 1
---- !u!1001 &728847901
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1383342301541297782, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -95.38793
-      objectReference: {fileID: 0}
-    - target: {fileID: 1383342301541297782, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 148.12349
-      objectReference: {fileID: 0}
-    - target: {fileID: 1383342301541297782, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 264.82648
-      objectReference: {fileID: 0}
-    - target: {fileID: 1383342301541297782, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1383342301541297782, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1383342301541297782, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1383342301541297782, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1383342301541297782, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1383342301541297782, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1383342301541297782, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5025313518619460299, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
-      propertyPath: m_Name
-      value: CarBase
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
---- !u!1 &728847902 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5025313518619460299, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
-  m_PrefabInstance: {fileID: 728847901}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &730191630
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 730191632}
-  - component: {fileID: 730191631}
-  m_Layer: 0
-  m_Name: TimeLogicObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &730191631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 730191630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca3ec117247683a43949a8eaa895d4ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TimeLogic
-  countdownText: {fileID: 0}
-  TimeRunning: 0
-  startCar: {fileID: 0}
---- !u!4 &730191632
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 730191630}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -175.81721, y: 0, z: 3220.8955}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &764718037
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3221,7 +3112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12bd1a554dba276458bd5d0c280ca340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FinishLineColission
-  TimerOn: {fileID: 1084408036}
+  TimerOn: {fileID: 0}
   timeToBeat: 24.006
 --- !u!4 &819588512
 Transform:
@@ -4798,7 +4689,7 @@ MonoBehaviour:
   dropDuration: 0.4
   hiddenY: 600
   shownY: -50
-  timer: {fileID: 730191631}
+  timer: {fileID: 0}
   carSelectSceneName: 
   trackSelectSceneName: 
 --- !u!4 &1074802225
@@ -4816,108 +4707,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1084408035
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1084408038}
-  - component: {fileID: 1084408036}
-  - component: {fileID: 1084408037}
-  m_Layer: 0
-  m_Name: TimeLogic
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1084408036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1084408035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca3ec117247683a43949a8eaa895d4ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TimeLogic
-  countdownText: {fileID: 1871236842}
-  TimeRunning: 0
-  startCar: {fileID: 728847902}
---- !u!114 &1084408037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1084408035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: d1df1c9916488504cacfaf9dfab465d7, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 9cb46b6f-4608-4962-84e2-d3ce322e1a66
-    m_ActionName: 'Drive/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ca26a905-11a2-485c-97da-f86337cd9095
-    m_ActionName: 'Drive/Brake[/Keyboard/space]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1084408036}
-        m_TargetAssemblyTypeName: TimeLogic, Assembly-CSharp
-        m_MethodName: RestartTrack
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 4a2769c1-a5c5-4f46-8531-e8ee58183524
-    m_ActionName: 'Drive/Restart[/Keyboard/r]'
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Drive
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!4 &1084408038
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1084408035}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.48876837, y: -0.22428422, z: -0.13815321, w: 0.8316946}
-  m_LocalPosition: {x: 50, y: 50, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -61.043, y: -29.447, z: -1.249}
 --- !u!1001 &1090557596
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7831,6 +7620,7 @@ GameObject:
   - component: {fileID: 1871236844}
   - component: {fileID: 1871236842}
   - component: {fileID: 1871236843}
+  - component: {fileID: 1871236846}
   m_Layer: 5
   m_Name: CountDown
   m_TagString: Untagged
@@ -7943,8 +7733,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeLogic
   countdownText: {fileID: 1871236842}
+  newCar: {fileID: 0}
+  rb: {fileID: 0}
   TimeRunning: 1
-  startCar: {fileID: 0}
+  startPosition: {x: 0, y: 0, z: 0}
+  startRotation: {x: 0, y: 0, z: 0, w: 0}
+  finishCamera: {fileID: 257803713}
 --- !u!222 &1871236844
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7972,6 +7766,60 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -178.45715}
   m_SizeDelta: {x: 2000, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1871236846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871236841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: d1df1c9916488504cacfaf9dfab465d7, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9cb46b6f-4608-4962-84e2-d3ce322e1a66
+    m_ActionName: 'Drive/Move[/DualSenseGamepadHID/rightTrigger,/DualSenseGamepadHID/leftTrigger,/DualSenseGamepadHID/leftStick/left,/DualSenseGamepadHID/leftStick/right,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ca26a905-11a2-485c-97da-f86337cd9095
+    m_ActionName: 'Drive/Brake[/DualSenseGamepadHID/buttonSouth,/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1871236843}
+        m_TargetAssemblyTypeName: TimeLogic, Assembly-CSharp
+        m_MethodName: RestartTrack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4a2769c1-a5c5-4f46-8531-e8ee58183524
+    m_ActionName: 'Drive/Restart[/Keyboard/r,/DualSenseGamepadHID/buttonNorth]'
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: 
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1888129900
 GameObject:
   m_ObjectHideFlags: 0
@@ -8022,7 +7870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc4d6f342758064f9cd25524fd24711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeUI
-  raceTimer: {fileID: 1084408036}
+  raceTimer: {fileID: 1871236843}
   timerText: {fileID: 1888129903}
 --- !u!114 &1888129903
 MonoBehaviour:
@@ -9156,13 +9004,10 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 486943995}
-  - {fileID: 730191632}
   - {fileID: 1074802225}
-  - {fileID: 1084408038}
   - {fileID: 1261413201}
   - {fileID: 354665656}
   - {fileID: 1704973701}
   - {fileID: 257803714}
   - {fileID: 819588512}
   - {fileID: 1035020921}
-  - {fileID: 728847901}
