@@ -1460,6 +1460,63 @@ Transform:
   - {fileID: 1393489083}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &360166493
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5174483636430367748, guid: 3a64eb6dce6974a40949c174d6551d87, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 354.19598
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174483636430367748, guid: 3a64eb6dce6974a40949c174d6551d87, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 240.7372
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174483636430367748, guid: 3a64eb6dce6974a40949c174d6551d87, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.1901
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174483636430367748, guid: 3a64eb6dce6974a40949c174d6551d87, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174483636430367748, guid: 3a64eb6dce6974a40949c174d6551d87, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174483636430367748, guid: 3a64eb6dce6974a40949c174d6551d87, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174483636430367748, guid: 3a64eb6dce6974a40949c174d6551d87, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174483636430367748, guid: 3a64eb6dce6974a40949c174d6551d87, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174483636430367748, guid: 3a64eb6dce6974a40949c174d6551d87, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174483636430367748, guid: 3a64eb6dce6974a40949c174d6551d87, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5272293045753936737, guid: 3a64eb6dce6974a40949c174d6551d87, type: 3}
+      propertyPath: m_Name
+      value: Music-Ingame
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3a64eb6dce6974a40949c174d6551d87, type: 3}
 --- !u!1001 &364688669
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2754,11 +2811,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
---- !u!1 &728847902 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5025313518619460299, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
-  m_PrefabInstance: {fileID: 728847901}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &730191630
 GameObject:
   m_ObjectHideFlags: 0
@@ -2789,8 +2841,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeLogic
   countdownText: {fileID: 0}
+  timertext: {fileID: 0}
   TimeRunning: 0
-  startCar: {fileID: 0}
+  car: {fileID: 0}
 --- !u!4 &730191632
 Transform:
   m_ObjectHideFlags: 0
@@ -4847,8 +4900,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeLogic
   countdownText: {fileID: 1871236842}
+  timertext: {fileID: 0}
   TimeRunning: 0
-  startCar: {fileID: 728847902}
+  car: {fileID: 0}
 --- !u!114 &1084408037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7943,8 +7997,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeLogic
   countdownText: {fileID: 1871236842}
+  timertext: {fileID: 0}
   TimeRunning: 1
-  startCar: {fileID: 0}
+  car: {fileID: 0}
 --- !u!222 &1871236844
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9166,3 +9221,4 @@ SceneRoots:
   - {fileID: 819588512}
   - {fileID: 1035020921}
   - {fileID: 728847901}
+  - {fileID: 360166493}
