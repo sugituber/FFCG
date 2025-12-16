@@ -30,13 +30,22 @@ public class FinishMenu : MonoBehaviour
     private void Awake()
     {
         Debug.Log("FinishMenu sees timer: " + timer);
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Debug.Log("FinishMenu sees timer: " + timer);
         instance = this;
+
         finishOverlay.SetActive(false);
         finishPanel.gameObject.SetActive(false);
     }
 
     public void ShowFinishScreen(float timeToBeat)
     {
+        Time.timeScale = 0f;
+        
         // Display times
         yourTimeText.text = "Your Time: " + timer.TimeFormat();
         timeToBeatText.text = "Time To Beat: " + FormatTime(timeToBeat);
@@ -51,7 +60,6 @@ public class FinishMenu : MonoBehaviour
         finishOverlay.SetActive(true);
         finishPanel.gameObject.SetActive(true);
 
-        Time.timeScale = 0f;
         StartCoroutine(DropDown());
     }
 
@@ -83,7 +91,6 @@ public class FinishMenu : MonoBehaviour
     }
 
     // ---------- buttons ----------
-
     public void RetryTrack()
     {
         Time.timeScale = 1f;

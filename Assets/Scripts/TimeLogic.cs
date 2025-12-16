@@ -67,6 +67,7 @@ public class TimeLogic : MonoBehaviour
     {
         elapsedTime = 0f;
         TimeRunning = true;
+        drive_able.enabled = true;
     }
 
     public void StopTimer()
