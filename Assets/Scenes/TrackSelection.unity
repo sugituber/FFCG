@@ -522,7 +522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrackInfo
   sceneFile: {fileID: 102900000, guid: 31e7ee1799e4f3a4c85bb25c8c8e2d73, type: 3}
-  previewImage: {fileID: 21300000, guid: b25ee2f739868c64ca04a6c01b9d9e9d, type: 3}
+  previewImage: {fileID: 21300000, guid: 4705bb52983f691489281f3536d24f8c, type: 3}
 --- !u!1 &604277655
 GameObject:
   m_ObjectHideFlags: 0
