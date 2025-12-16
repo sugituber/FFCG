@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.InputSystem;
 
 public class TimeLogic : MonoBehaviour
 {
@@ -8,9 +9,16 @@ public class TimeLogic : MonoBehaviour
     public bool TimeRunning = false;
     private float elapsedTime = 0f;
 
+    private Vector3 startPosition;
+    private Quaternion startRotation;
+    public GameObject car;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        startPosition = car.transform.position;
+        startRotation = car.transform.rotation;
+
         StartCoroutine(StartCountdown());
     }
 
@@ -37,9 +45,15 @@ public class TimeLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Keyboard.current.rKey.wasPressedThisFrame)
+        {
+            ResetCarAndTimer();
+        }
+
         if (TimeRunning)
             elapsedTime += Time.deltaTime;
-            timertext.text = TimeFormat();
+
+        timertext.text = TimeFormat();
     }
 
     public void StartTimer()
@@ -64,4 +78,31 @@ public class TimeLogic : MonoBehaviour
     {
         return elapsedTime;
     }
+
+    void ResetCarAndTimer()
+    {
+        if (car == null) return;
+
+        CarController cc = car.GetComponent<CarController>();
+        Rigidbody rb = car.GetComponent<Rigidbody>();
+        
+        // 2. Reset position & rotation
+        car.transform.position = startPosition;
+        car.transform.rotation = startRotation;
+
+        if(rb != null)
+        {
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+
+        // 3. Reset timer
+        elapsedTime = 0f;
+        TimeRunning = false;
+
+        // 4. Restart countdown
+        countdownText.gameObject.SetActive(true);
+        StartCoroutine(StartCountdown());
+    }
+
 }

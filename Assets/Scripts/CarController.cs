@@ -244,4 +244,12 @@ public class CarController : MonoBehaviour
             Gizmos.DrawRay(origin, info.accelForce / forceVisualScale);
         }
     }
+
+    public void ResetInput()
+    {
+        moveInput = Vector2.zero;
+        brakeInput = false;
+        currentSteerAngle = 0f;
+    }
+
 }
