@@ -5,7 +5,8 @@ public class MainMenu : MonoBehaviour
 {
     public void TrackSelect()
     {
-        Debug.Log("Start button clicked!");
+        Time.timeScale = 1f;
+        Debug.Log("TrackSelect pressed");
         SceneManager.LoadScene("TrackSelection");
     }
 

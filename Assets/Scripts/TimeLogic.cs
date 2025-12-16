@@ -13,12 +13,10 @@ public class TimeLogic : MonoBehaviour
     private Rigidbody rb;
     private Vector3 startPosition;
     private Quaternion startRotation;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
-
-
         Debug.Log("RaceStart Start() is running!");
         if (CarController.instance != null)
         {
@@ -92,6 +90,7 @@ public class TimeLogic : MonoBehaviour
             TimeRunning = false;
             elapsedTime = 0f;
             rb.transform.position = startPosition;
+            Debug.Log("restart triggered");
             rb.transform.localRotation = startRotation;
             rb.isKinematic = true;
             countdownText.gameObject.SetActive(true);

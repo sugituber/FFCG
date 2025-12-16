@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -498,6 +498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameFlow
   selectedTrack: 
   selectedCar: {fileID: 0}
+  currentCar: {fileID: 0}
 --- !u!4 &421882443
 Transform:
   m_ObjectHideFlags: 0
@@ -1096,8 +1097,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 250, y: 55}
-  m_SizeDelta: {x: -600, y: -250}
+  m_AnchoredPosition: {x: 200, y: 25}
+  m_SizeDelta: {x: -500, y: -190}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1139172885
 MonoBehaviour:
@@ -1368,8 +1369,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 391, y: -239}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 250, y: -180}
+  m_SizeDelta: {x: 200, y: 36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1482371395
 GameObject:
@@ -1405,8 +1406,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -225, y: -15}
-  m_SizeDelta: {x: -550, y: -330}
+  m_AnchoredPosition: {x: -175, y: -10}
+  m_SizeDelta: {x: -450, y: -240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1482371397
 MonoBehaviour:

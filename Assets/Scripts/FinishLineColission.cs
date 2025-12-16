@@ -11,13 +11,14 @@ public class FinishLineColission : MonoBehaviour
     {
         if (finished) return;
 
-        if (other.CompareTag("Player"))
+        if (other.GetComponentInParent<CarController>() != null)
         {
-            Debug.Log("Finish line triggered");
             finished = true;
+
             TimerOn.StopTimer();
             FinishMenu.instance.ShowFinishScreen(timeToBeat);
-        }
 
+            Debug.Log("FINISH TRIGGERED");
+        }
     }
 }
