@@ -1,37 +1,16 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.InputSystem;
-using Unity.VisualScripting;
 
 public class TimeLogic : MonoBehaviour
 {
     public TMPro.TextMeshProUGUI countdownText;
+    public TMPro.TextMeshProUGUI thetimer;
     public bool TimeRunning = false;
     private float elapsedTime = 0f;
 
-    public GameObject startCar;
-    private Rigidbody rb;
-    private Vector3 startPosition;
-    private Quaternion startRotation;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
-
-
-        Debug.Log("RaceStart Start() is running!");
-        if (CarController.instance != null)
-        {
-            rb = CarController.instance.GetComponent<Rigidbody>();
-            rb.isKinematic = true;
-        }
-        startPosition = rb.transform.position;
-        startRotation = rb.transform.localRotation;
-
-        startCar.SetActive(false);
-        GameObject newCar = Instantiate(GameFlow.Instance.selectedCar, startPosition, startRotation);
-        GameFlow.Instance.currentCar = newCar;
-        
         StartCoroutine(StartCountdown());
     }
 
@@ -48,10 +27,6 @@ public class TimeLogic : MonoBehaviour
 
         countdownText.text = "START!";
         TimeRunning = true;
-        if (rb != null)
-        {
-            rb.isKinematic = false;
-        }
         StartTimer();
 
         yield return new WaitForSeconds(1f);
@@ -64,6 +39,7 @@ public class TimeLogic : MonoBehaviour
     {
         if (TimeRunning)
             elapsedTime += Time.deltaTime;
+            thetimer.text = TimeFormat();
     }
 
     public void StartTimer()
@@ -84,22 +60,7 @@ public class TimeLogic : MonoBehaviour
         int ms = (int) ((elapsedTime * 1000f) % 1000);
         return $"{min:00}:{sec:00}:{ms:000}";
     }
-
-    public void RestartTrack(InputAction.CallbackContext ctx)
-    {
-        if (TimeRunning)
-        {
-            TimeRunning = false;
-            elapsedTime = 0f;
-            rb.transform.position = startPosition;
-            rb.transform.localRotation = startRotation;
-            rb.isKinematic = true;
-            countdownText.gameObject.SetActive(true);
-            
-            StartCoroutine(StartCountdown());
-        }
-    }
-        public float GetElapsedTime()
+    public float GetElapsedTime()
     {
         return elapsedTime;
     }
