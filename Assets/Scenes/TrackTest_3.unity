@@ -1099,6 +1099,7 @@ MonoBehaviour:
   timertext: {fileID: 1919934456}
   TimeRunning: 0
   car: {fileID: 1246346081}
+  drive_able: {fileID: 1560041673}
 --- !u!1001 &280303091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6315,6 +6316,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5994186404907023703, guid: 3b066c7f662106e41b6f2a53619e7a5f, type: 3}
+--- !u!114 &1560041673 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3637640705870019053, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
+  m_PrefabInstance: {fileID: 1246346080}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a23858844d2c6f44a885984d865c8182, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarController
 --- !u!1001 &1564253752
 PrefabInstance:
   m_ObjectHideFlags: 0

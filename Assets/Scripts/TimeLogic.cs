@@ -12,18 +12,25 @@ public class TimeLogic : MonoBehaviour
     private Vector3 startPosition;
     private Quaternion startRotation;
     public GameObject car;
+    public CarController drive_able;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         startPosition = car.transform.position;
         startRotation = car.transform.rotation;
-
+        drive_able.enabled = false;
         StartCoroutine(StartCountdown());
     }
 
     IEnumerator StartCountdown()
     {
+        TimeRunning = false;          // stop timer
+        drive_able.enabled = false;   // lock car
+        elapsedTime = 0f;             // reset time
+
+        countdownText.gameObject.SetActive(true);
+
         int countdown = 3;
 
         while (countdown > 0)
@@ -34,8 +41,9 @@ public class TimeLogic : MonoBehaviour
         }
 
         countdownText.text = "START!";
-        TimeRunning = true;
-        StartTimer();
+
+        drive_able.enabled = true;    // unlock car
+        TimeRunning = true;           // start timer
 
         yield return new WaitForSeconds(1f);
 
@@ -52,7 +60,6 @@ public class TimeLogic : MonoBehaviour
 
         if (TimeRunning)
             elapsedTime += Time.deltaTime;
-
         timertext.text = TimeFormat();
     }
 
@@ -83,7 +90,7 @@ public class TimeLogic : MonoBehaviour
     {
         if (car == null) return;
 
-        CarController cc = car.GetComponent<CarController>();
+        // CarController cc = car.GetComponent<CarController>();
         Rigidbody rb = car.GetComponent<Rigidbody>();
         
         // 2. Reset position & rotation
