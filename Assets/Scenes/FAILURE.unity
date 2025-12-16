@@ -701,9 +701,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12bd1a554dba276458bd5d0c280ca340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FinishLineColission
-  carCam: {fileID: 1433562750937284996}
-  finishCam: {fileID: 643377082}
   TimerOn: {fileID: 1696247734}
+  timeToBeat: 24.006
 --- !u!4 &195575003
 Transform:
   m_ObjectHideFlags: 0
@@ -870,7 +869,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeLogic
   countdownText: {fileID: 227723129}
+  timertext: {fileID: 0}
   TimeRunning: 1
+  car: {fileID: 0}
 --- !u!1001 &228040477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5086,7 +5087,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeLogic
   countdownText: {fileID: 227723129}
+  timertext: {fileID: 0}
   TimeRunning: 0
+  car: {fileID: 0}
 --- !u!4 &1696247735
 Transform:
   m_ObjectHideFlags: 0
@@ -6135,11 +6138,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &1433562750937284996 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 1766248562208327429, guid: 8da5ff3740feb29499e9fbb747a81674, type: 3}
-  m_PrefabInstance: {fileID: 8152185876981431956}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3489494366211411152
 PrefabInstance:
   m_ObjectHideFlags: 0

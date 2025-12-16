@@ -571,11 +571,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
---- !u!1 &147927842 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5025313518619460299, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
-  m_PrefabInstance: {fileID: 147927841}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &169844442
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,9 +632,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12bd1a554dba276458bd5d0c280ca340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FinishLineColission
-  carCam: {fileID: 2042249179}
-  finishCam: {fileID: 643377082}
   TimerOn: {fileID: 1696247734}
+  timeToBeat: 24.006
 --- !u!4 &195575003
 Transform:
   m_ObjectHideFlags: 0
@@ -874,8 +868,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeLogic
   countdownText: {fileID: 227723129}
+  timertext: {fileID: 0}
   TimeRunning: 1
-  startCar: {fileID: 0}
+  car: {fileID: 0}
 --- !u!1001 &228040477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5623,8 +5618,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeLogic
   countdownText: {fileID: 227723129}
+  timertext: {fileID: 0}
   TimeRunning: 0
-  startCar: {fileID: 147927842}
+  car: {fileID: 0}
 --- !u!4 &1696247735
 Transform:
   m_ObjectHideFlags: 0
