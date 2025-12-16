@@ -2281,7 +2281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: da717bb66a9b4664795cebcb717b70b7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0000076293945
+      value: -0.099
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: da717bb66a9b4664795cebcb717b70b7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3957,6 +3957,14 @@ PrefabInstance:
     - target: {fileID: 5025313518619460299, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
       propertyPath: m_Name
       value: CarBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025313518619460299, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5633472094791073279, guid: 8ec0199690073d84391ed5fdfcf3f462, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6804,10 +6812,10 @@ SceneRoots:
   m_Roots:
   - {fileID: 1419645002}
   - {fileID: 517164979}
+  - {fileID: 821168673}
   - {fileID: 159392193}
   - {fileID: 279249140}
   - {fileID: 967522376}
   - {fileID: 1246346080}
   - {fileID: 2037598568}
   - {fileID: 1668291735}
-  - {fileID: 821168673}

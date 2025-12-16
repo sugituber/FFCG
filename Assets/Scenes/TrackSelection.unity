@@ -227,7 +227,6 @@ Transform:
   - {fileID: 2137874023}
   - {fileID: 429716531}
   - {fileID: 1309072849}
-  - {fileID: 449245957}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &128800331
@@ -476,7 +475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrackPreview
   previewImg: {fileID: 77854783}
-  previewSprite: {fileID: 21300000, guid: 9e986a39d16b9374faee3ab26145c339, type: 3}
+  previewSprite: {fileID: 21300000, guid: a8cfb91a1f7a3de428d3e744e171a1b9, type: 3}
 --- !u!1 &429716530
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,55 +521,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd8d749fc97389469cec0f4e7402166, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrackInfo
-  sceneFile: {fileID: 102900000, guid: e73f2cc4dbc01354ea0ef2266ff2f3e2, type: 3}
-  previewImage: {fileID: 21300000, guid: a8cfb91a1f7a3de428d3e744e171a1b9, type: 3}
---- !u!1 &449245956
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 449245957}
-  - component: {fileID: 449245958}
-  m_Layer: 0
-  m_Name: TrackTest
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &449245957
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 449245956}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -583.00696, y: -128.26091, z: -49.72441}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1601302928}
-  m_Father: {fileID: 128800330}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &449245958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 449245956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cd8d749fc97389469cec0f4e7402166, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TrackInfo
-  sceneFile: {fileID: 102900000, guid: 116ddd373fe40f5449d791e91a137ab9, type: 3}
-  previewImage: {fileID: 21300000, guid: 218b5aeec1d629545a18eaa086115e2e, type: 3}
+  sceneFile: {fileID: 102900000, guid: 31e7ee1799e4f3a4c85bb25c8c8e2d73, type: 3}
+  previewImage: {fileID: 21300000, guid: b25ee2f739868c64ca04a6c01b9d9e9d, type: 3}
 --- !u!1 &604277655
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,8 +1244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd8d749fc97389469cec0f4e7402166, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrackInfo
-  sceneFile: {fileID: 102900000, guid: ecc151a3d3475f345b6c29a3d7993153, type: 3}
-  previewImage: {fileID: 21300000, guid: 9e986a39d16b9374faee3ab26145c339, type: 3}
+  sceneFile: {fileID: 102900000, guid: 57779ed32b4e03d418806bf010555dad, type: 3}
+  previewImage: {fileID: 21300000, guid: a8cfb91a1f7a3de428d3e744e171a1b9, type: 3}
 --- !u!1 &1558065389
 GameObject:
   m_ObjectHideFlags: 0
@@ -1339,53 +1291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrackPreview
   previewImg: {fileID: 77854783}
-  previewSprite: {fileID: 21300000, guid: a8cfb91a1f7a3de428d3e744e171a1b9, type: 3}
---- !u!1 &1601302927
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1601302928}
-  - component: {fileID: 1601302929}
-  m_Layer: 0
-  m_Name: sprite
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1601302928
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1601302927}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -78.20062, y: -141.8734, z: 349.4969}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 449245957}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1601302929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1601302927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0cebe243c9b0e14d90b8a0c44f37d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TrackPreview
-  previewImg: {fileID: 77854783}
-  previewSprite: {fileID: 21300000, guid: 218b5aeec1d629545a18eaa086115e2e, type: 3}
+  previewSprite: {fileID: 21300000, guid: b25ee2f739868c64ca04a6c01b9d9e9d, type: 3}
 --- !u!1 &1806793407
 GameObject:
   m_ObjectHideFlags: 0
@@ -1604,7 +1510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd8d749fc97389469cec0f4e7402166, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrackInfo
-  sceneFile: {fileID: 102900000, guid: 9076533650c38d8469fd8653fb452a56, type: 3}
+  sceneFile: {fileID: 102900000, guid: 116ddd373fe40f5449d791e91a137ab9, type: 3}
   previewImage: {fileID: 21300000, guid: 218b5aeec1d629545a18eaa086115e2e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
