@@ -4,7 +4,7 @@ using System.Collections;
 public class TimeLogic : MonoBehaviour
 {
     public TMPro.TextMeshProUGUI countdownText;
-    public TMPro.TextMeshProUGUI thetimer;
+    public TMPro.TextMeshProUGUI timertext;
     public bool TimeRunning = false;
     private float elapsedTime = 0f;
 
@@ -39,7 +39,7 @@ public class TimeLogic : MonoBehaviour
     {
         if (TimeRunning)
             elapsedTime += Time.deltaTime;
-            thetimer.text = TimeFormat();
+            timertext.text = TimeFormat();
     }
 
     public void StartTimer()

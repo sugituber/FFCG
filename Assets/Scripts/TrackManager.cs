@@ -40,7 +40,7 @@ public class TrackManager : MonoBehaviour
         foreach (Transform t in trackList)
         {
             Transform trackRef = t; // <-- local copy
-            Debug.Log("button here");
+            // Debug.Log("button here");
             GameObject button = Instantiate(buttonPrefab, buttonParent);
             button.GetComponentInChildren<TextMeshProUGUI>().text = trackRef.name;
             button.GetComponent<Button>().onClick.AddListener(() =>

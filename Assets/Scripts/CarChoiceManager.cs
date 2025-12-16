@@ -26,11 +26,6 @@ public class CarChoiceManager : MonoBehaviour
 
         Carbuttons();
         nextbutton.interactable = false;
-
-        // if (nextbutton.interactable == true)
-        // {
-        //     OnNext();
-        // }
     }
 
     // Update is called once per frame
@@ -58,34 +53,10 @@ public class CarChoiceManager : MonoBehaviour
         }
 
     }
-    // void Carbuttons()
-    // {
-    //     foreach (Transform car in CarFolder)
-    //     {
-    //         GameObject button = Instantiate(carbuttonprefab, carbuttonParent);
-    //         button.GetComponentInChildren<TextMeshProUGUI>().text = car.name;
-
-    //         button.GetComponent<Button>().onClick.AddListener(() =>
-    //         {
-    //             Debug.Log("Selected car: " + car.name);
-    //             GameFlow.Instance.selectedCar = car.name;
-    //             nextbutton.interactable = true;
-    //             OnNext();
-    //         });
-
-    //         button.AddComponent<CarPreview>(); // Optional: preview functionality
-    //     }
-    // }
 
     void OnNext()
     {
-        // nextbutton.GetComponent<Button>().onClick.AddListener(() =>
-        // {
-        //     Debug.Log("Next thingy:D");
-        //     Debug.Log("Loading track: " + GameFlow.Instance.selectedTrack);
-        //     // SceneManager.LoadScene("");
-        //     SceneManager.LoadScene(GameFlow.Instance.selectedTrack);
-        // });
+
         nextbutton.onClick.RemoveAllListeners();
         nextbutton.onClick.AddListener(() =>
         {

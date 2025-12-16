@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12bd1a554dba276458bd5d0c280ca340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FinishLineColission
-  TimerOn: {fileID: 0}
+  TimerOn: {fileID: 279249141}
   timeToBeat: 24.006
 --- !u!1001 &162890051
 PrefabInstance:
@@ -489,7 +489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeLogic
   countdownText: {fileID: 1009836895}
-  thetimer: {fileID: 1919934456}
+  timertext: {fileID: 1919934456}
   TimeRunning: 0
 --- !u!1001 &318801711
 PrefabInstance:
