@@ -29,7 +29,6 @@ public class FinishMenu : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("FinishMenu sees timer: " + timer);
         if (instance != null && instance != this)
         {
             Destroy(gameObject);
@@ -45,7 +44,7 @@ public class FinishMenu : MonoBehaviour
     public void ShowFinishScreen(float timeToBeat)
     {
         Time.timeScale = 0f;
-        
+
         // Display times
         yourTimeText.text = "Your Time: " + timer.TimeFormat();
         timeToBeatText.text = "Time To Beat: " + FormatTime(timeToBeat);
