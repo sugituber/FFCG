@@ -17,6 +17,5 @@ public class FinishLineColission : MonoBehaviour
             TimerOn.StopTimer();
             FinishMenu.instance.ShowFinishScreen(timeToBeat);
         }
-
     }
 }
