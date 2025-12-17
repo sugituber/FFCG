@@ -1,23 +1,25 @@
 using UnityEngine;
 
 public class Speedometer : MonoBehaviour
+
 {
-    public Rigidbody car;
-    public TMPro.TextMeshProUGUI speedometer;
-    public float speedScale = 1f;
+    public TMPro.TextMeshProUGUI speedtext;
+    [Tooltip("Assign the Rigidbody you want to track.")]
+    public Rigidbody rb;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        Debug.Log("speed:P");
-        car = CarController.instance.rb;
-    }
+    [Tooltip("Current speed in units per second.")]
+    public float currentSpeed;
 
-    // Update is called once per frame
     void Update()
     {
-        float forwardSpeed = Vector3.Dot(car.linearVelocity, car.transform.forward);
-        float speedValue = forwardSpeed * speedScale;
-        speedometer.text = Mathf.FloorToInt(speedValue).ToString();
+        if (rb != null)
+        {
+            currentSpeed = rb.linearVelocity.magnitude;
+            speedtext.text = Mathf.RoundToInt(currentSpeed*5).ToString();
+        }
+        else
+        {
+            currentSpeed = 0f;
+        }
     }
 }

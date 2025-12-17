@@ -4010,7 +4010,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Gold Medal: 21.063'
+  m_text: 'Gold Medal: 24.489'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4518,7 +4518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -7666,7 +7666,7 @@ GameObject:
   - component: {fileID: 1748765325}
   - component: {fileID: 1748765328}
   - component: {fileID: 1748765327}
-  - component: {fileID: 1748765326}
+  - component: {fileID: 1748765329}
   m_Layer: 5
   m_Name: speedometer
   m_TagString: Untagged
@@ -7693,21 +7693,6 @@ RectTransform:
   m_AnchoredPosition: {x: -277, y: 62}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1748765326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1748765324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66ee0423a0137e24db8b0720be3411cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Speedometer
-  car: {fileID: 85627953}
-  speedometer: {fileID: 1748765327}
-  speedScale: 5
 --- !u!114 &1748765327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7808,6 +7793,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1748765324}
   m_CullTransparentMesh: 1
+--- !u!114 &1748765329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748765324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66ee0423a0137e24db8b0720be3411cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Speedometer
+  speedtext: {fileID: 1748765327}
+  rb: {fileID: 85627953}
+  currentSpeed: 0
 --- !u!1001 &1801092767
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,39 +5,39 @@ using UnityEditor;
 
 public class TrackInfo : MonoBehaviour
 {
-
+    // Editor-only reference to SceneAsset
 #if UNITY_EDITOR
     public SceneAsset sceneFile;
 #endif
+
+    // Shared field
     public Sprite previewImage;
 
+    // Fallback name is serialized everywhere to avoid player/editor mismatch
+    [HideInInspector] 
+    public string fallbackSceneName;
+
+    // Runtime property to get the scene name
     public string SceneName
     {
         get
         {
 #if UNITY_EDITOR
-            return sceneFile != null ? sceneFile.name : "";
-#else      
+            return sceneFile != null ? sceneFile.name : fallbackSceneName;
+#else
             return fallbackSceneName;
 #endif
         }
     }
 
-#if !UNITY_EDITOR
-    [HideInInspector]
-    public string fallbackSceneName;
+    // Optional: automatically update fallbackSceneName in editor
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        if (sceneFile != null)
+        {
+            fallbackSceneName = sceneFile.name;
+        }
+    }
 #endif
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

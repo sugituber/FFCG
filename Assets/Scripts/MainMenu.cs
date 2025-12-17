@@ -20,8 +20,4 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Settings_help");
     }
 
-    public void PlayGame()
-    {
-        SceneManager.LoadScene("TimeTest");
-    }
 }
